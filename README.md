@@ -1,4 +1,4 @@
-# William Yue's Math Notes
+# William Yue's Academic Notes
 
 This github repository contains `.tex` and `.pdf` files for notes on subjects I'm studying.
 Hopefully you find them interesting. 
@@ -12,6 +12,6 @@ thought process whenever I make significant breakthroughs ("aha!" moments).
 Right now, I have
 
 <ul>
-    <li><strong>Complex Analysis</strong>, using the Princeton Lectures book</li>
+    <li><strong>Representation Theory</strong>, using [Etingof's Book](https://klein.mit.edu/~etingof/repb.pdf)</li>
     <!-- <li></li> -->
 </ul>
