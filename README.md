@@ -12,6 +12,6 @@ thought process whenever I make significant breakthroughs ("aha!" moments).
 Right now, I have
 
 <ul>
-    <li><strong>Representation Theory</strong>, using <a src="https://klein.mit.edu/~etingof/repb.pdf">Etingof's Book</a></li>
+    <li><strong>Representation Theory</strong>, using <a href="https://klein.mit.edu/~etingof/repb.pdf">Etingof's Book</a></li>
     <!-- <li></li> -->
 </ul>
