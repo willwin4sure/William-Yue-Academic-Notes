@@ -1,0 +1,73 @@
+\chapter{Basic Notions of Representation Theory}
+
+\section{What is representation theory?}
+
+In this section, the book gives a very quick summary of the topics covered in representation theory. However, to a beginner in the subject, it makes absolutely no sense, so we'll skip it.
+
+\section{Algebras}
+
+Let $k$ be a field. In general, we will consider $k$ to be algebraically closed (assume so unless stated otherwise). The main examples of such fields are $\mathbb{C}$ and $\ol{\mathbb{F}_p}$. 
+
+\begin{definition}
+An \vocab{associative algebra} over $k$ is a vector space $A$ over $k$ together with a bilinear map $A\times A\to A$, where we write $(a,b)\mapsto ab$, such that $(ab)c=a(bc)$.
+\end{definition}
+
+So, an associative algebra is a vector space together with some associative ``multiplication" operation. This operation is also bilinear, so it respects the distributive property: $a(b+c)=ab+ac$, for example. We will present some examples of algebras soon.
+
+\begin{definition}
+A \vocab{unit} in an associative algebra is an element $1\in A$ such that $1a=a1=a$. If an associative algebra has a unit, we call it \vocab{unital}.
+\end{definition}
+
+Note that if an algebra is unital, that unit is unique: given two units $1$ and $1'$, $1=11'=1'$. 
+
+From now on, whenever we say algebra, we mean a unital associative algebra, unless stated otherwise.
+
+\begin{example}[Algebras]
+Here are some examples of algebras over $k$:
+\begin{enumerate}[(a)]
+    \item $A=k$. The multiplication is just given by normal multiplication in $k$.
+    \item The polynomial ring $A=k[x_1,\dots,x_n]$. Again, the multiplication is just given by normal multiplication of polynomials.
+    \item $A=\End V$, the algebra of endomorphisms of a vector space $V$ over $k$, which is the set of linear maps from $V$ to itself. Multiplication is given by composition of maps. If we specify a basis, we can also interpret these as the set of $n\times n$ matrices with entries in $k$.
+\end{enumerate}
+\end{example}
+
+Before we move on, we should note that there's another way to think of these algebras:
+
+\begin{moral}
+An algebra (unital and associative) $A$ over $k$ is a possibly noncommutative ring with a copy of $k$ inside of it. 
+\end{moral}
+
+Note that the copy of $k$ inside of $A$ implies that it is a $k$-vector space (since you can scale by elements of $k$). 
+
+Why is this essentially the same definition? Well, the definition before involved two operations in $A$: an addition operation given by the $k$-vector space, and a multiplication operation given by the bilinear map; these become the two operations of the noncommutative ring. For a more formal definition:
+
+\begin{definition}
+An \vocab{algebra} $A$ over $k$ is a \textit{possibly noncommutative} ring, equipped with an injective ring homomorphism $k\xhookrightarrow{} A$ (the image of this map is the ``copy of $k$ inside of" $A$). When $k$ is viewed as a subset of $A$, we additionally require $\lambda\cdot a =a\cdot \lambda$ for $\lambda\in k$ and $a\in A$.
+\end{definition}
+
+For example, when $A=\End V$, the image of the injective ring homomorphism $k\xhookrightarrow{} \End V$ is the set $kI=\{\lambda I:\lambda\in k\}$ where $I$ is the identity map. In general, the image of this injective ring homomorphism is always $k1$ where $1$ is the unit in $A$.
+
+\begin{definition}
+An algebra $A$ is \vocab{commutative} if $ab=ba$ for all $a,b\in A$. 
+\end{definition}
+
+\begin{example}[More algebras]
+\begin{enumerate}[(a)]
+    \item[]
+    \item The \vocab{free algebra} $A=k\langle x_1,\dots,x_n\rangle$, with a basis given by words with letters $x_1,\dots,x_n$, and multiplication given by concatenation of words. For example, $(x_1x_2x_1+x_3x_4)\cdot x_1^2x_2=x_1x_2x_1^3x_2+x_3x_4x_1^2x_2$.
+    \item The \vocab{group algebra} $A=k[G]$ of a group $G$, which is a $k$-vector space formally spanned by elements of $G$, and the product of two basis elements is given by the group operation. In particular, its basis is $\{a_g:g\in G\}$, with $a_ga_h=a_{gh}$. 
+\end{enumerate}
+\end{example}
+
+\begin{ques}
+When are each of the five examples of algebras mentioned above commutative?
+\end{ques}
+
+\begin{definition}
+A \vocab{homomorphism of algebras} $\varphi:A\to B$ is a linear map such that $\varphi(xy)=\varphi(x)\varphi(y)$ for all $x,y\in A$, and $\varphi(1)=1$.
+\end{definition}
+
+In other words, this map respects both operations in the algebras: addition and multiplication; it also sends $0$ to $0$ and $1$ to $1$. It is therefore a homomorphism in both senses: as a ring and as a vector space.
+
+
+
