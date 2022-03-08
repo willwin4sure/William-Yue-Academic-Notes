@@ -1,10 +1,18 @@
 \documentclass[11pt, oneside]{scrbook}
 \usepackage[sexy]{evan}
 
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
 \begin{document}
 
 \title{Electrodynamics Notes}
-\subtitle{Phillips Academy Andover Spring Term Physics IP with Jeffrey Shi, mentored by Fei Yao}
+\subtitle{Phillips Academy Andover\\
+PRO601 Physics IP: Advanced Electrodynamics with Jeffrey Shi\\
+Mentored by Fei Yao}
 \author{William Yue}
 \date{Spring 2022, v.$\alpha$.20220307}
 \maketitle
