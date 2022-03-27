@@ -155,25 +155,25 @@ We call points where $\nabla T=\vec{0}$ \vocab{stationary points}.
 
 These can be maximums (summits), minimums (valleys), saddle points (a pass), or ``shoulders."
 
-\subsubsection*{Problems}
+% \subsubsection*{Problems}
 
-\prob{1.13} Let $\vec{\scripty{r}}$ be the separation vector from a fixed point $(x',y',z')$ to the point $(x,y,z)$, and let $\scripty{r}$ be its length. Show that
-\begin{enumerate}[(a)]
-    \item $\nabla(\scr^2)=2\vec{\scr}$.
-    \item $\nabla(1/\scr)=-\hat{\scr}/\scr^2$.
-    \item What is the \textit{general} formula for $\nabla(\scr^n)$?
-\end{enumerate}
+% \prob{1.13} Let $\vec{\scripty{r}}$ be the separation vector from a fixed point $(x',y',z')$ to the point $(x,y,z)$, and let $\scripty{r}$ be its length. Show that
+% \begin{enumerate}[(a)]
+%     \item $\nabla(\scr^2)=2\vec{\scr}$.
+%     \item $\nabla(1/\scr)=-\hat{\scr}/\scr^2$.
+%     \item What is the \textit{general} formula for $\nabla(\scr^n)$?
+% \end{enumerate}
 
-\begin{proof}
-We skip to part (c), as (a) and (b) are simply special cases $n=2$ and $n=-1$, respectively. First, note that $\vec{\scr}=(x-x')\hat{x}+(y-y')\hat{y}+(z-z')\hat{z}$. Now,
-\[\nabla(\scr^n)=\frac{\partial \scr^n}{\partial x}\hat{x}+\frac{\partial \scr^n}{\partial y}\hat{y}+\frac{\partial \scr^n}{\partial z}\hat{z}=\sum \frac{\partial \scr^n}{\partial x}\hat{x},\]
-where the sum is over $x,y,z$. Now, note that
-\[\frac{\partial \scr^n}{\partial x}=n\scr^{n-1}\cdot\frac{\partial \scr}{\partial x}.\]
-Noting that $\scr=\sqrt{(x-x')^2+(y-y')^2+(z-z')^2}$, we have that
-\[\frac{\partial\scr}{\partial x}=\frac{1}{2}\cdot \frac{1}{\scr}\cdot (2x-2x')=\frac{x-x'}{\scr}.\]
-Therefore,
-\[\nabla(\scr^n)=n\scr^{n-1}\cdot \sum \frac{(x-x')\hat{x}}{\scr}=n\scr^{n-1}\cdot\frac{\vec{\scr}}{\scr}=\boxed{n\scr^{n-1}\hat{\scr}}.\]
-\end{proof}
+% \begin{proof}
+% We skip to part (c), as (a) and (b) are simply special cases $n=2$ and $n=-1$, respectively. First, note that $\vec{\scr}=(x-x')\hat{x}+(y-y')\hat{y}+(z-z')\hat{z}$. Now,
+% \[\nabla(\scr^n)=\frac{\partial \scr^n}{\partial x}\hat{x}+\frac{\partial \scr^n}{\partial y}\hat{y}+\frac{\partial \scr^n}{\partial z}\hat{z}=\sum \frac{\partial \scr^n}{\partial x}\hat{x},\]
+% where the sum is over $x,y,z$. Now, note that
+% \[\frac{\partial \scr^n}{\partial x}=n\scr^{n-1}\cdot\frac{\partial \scr}{\partial x}.\]
+% Noting that $\scr=\sqrt{(x-x')^2+(y-y')^2+(z-z')^2}$, we have that
+% \[\frac{\partial\scr}{\partial x}=\frac{1}{2}\cdot \frac{1}{\scr}\cdot (2x-2x')=\frac{x-x'}{\scr}.\]
+% Therefore,
+% \[\nabla(\scr^n)=n\scr^{n-1}\cdot \sum \frac{(x-x')\hat{x}}{\scr}=n\scr^{n-1}\cdot\frac{\vec{\scr}}{\scr}=\boxed{n\scr^{n-1}\hat{\scr}}.\]
+% \end{proof}
 
 % TODO: insert 1.13
 
@@ -274,7 +274,7 @@ In general, product rules involving a scalar function are easy, and exactly what
 \begin{proposition}[Gradient product rules]
     We have that
     \begin{itemize}
-        \item $\nabla(fg)=f\nabla g+g\nabla f$m
+        \item $\nabla(fg)=f\nabla g+g\nabla f$,
         \item $\nabla(\vec{a}\cdot\vec{b}) = \vec{a}\times(\nabla\times \vec{b}) + \vec{b}\times(\nabla\times \vec{a})+(\vec{a}\cdot\nabla)\vec{b}+(\vec{b}\cdot\nabla)\vec{a}$.
     \end{itemize}
 \end{proposition}
@@ -321,8 +321,8 @@ A proof of this by components amounts to the fact that $\frac{\partial^2T}{\part
 There is a simple physical explanation for why the curl of the gradient always vanishes. Imagine $T$ represents the height of some mountain; the gradient tells you which direction walks you upwards. If there was nonzero curl of the gradient, this would amount to the gradient vector going around in a closed loop; however, this would mean there is a closed loop where you're always travelling upwards, which is impossible! You can't end up in the same place but be at a higher height.
 
 In essence, we're combining the fundamental theorems of gradients and curls, which will be introduced in the next section. By the fundamental theorem of curl (Stokes' Theorem), the surface integral of the curl of the gradient of $T$ is equal to the line integral of the gradient of $T$ around the boundary of that surface. Then, the fundamental theorem of gradient implies that this loop integral equals 0. In symbols,
-\[\iint_S\nabla\times(\nabla T)\cdot d\vec{a}=\oint_{\partial S}\nabla T\cdot d\vec{\ell}=\vec{0}\]
-since $\partial^2S=0$.
+\[\iint_\mathcal{S}\nabla\times(\nabla T)\cdot d\vec{a}=\oint_{\partial \mathcal{S}}\nabla T\cdot d\vec{\ell}=\vec{0}\]
+since $\partial^2\mathcal{S}=0$.
 \end{remark}
 
 Like the curl of the gradient, the \textit{divergence} of the curl is always equal to zero:
@@ -391,3 +391,312 @@ As with conservative forces, there also exist a certain class of vector functoin
 the value of a surface integral is independent of the shape of the particular surface chosen,
 and instead is determined entirely by the boundary line $\partial \mathcal{S}$. 
 Classifying these functions is also an important task.
+
+\begin{definition}\label{defvolint}
+    A \vocab{volume integral} is an expression of the form
+    \[\iiint_{\mathcal{V}}Td\tau,\]
+    where $T$ is some scalar function and $d\tau$ is and infinitesimal volume element.
+\end{definition}
+
+Occasionally, we also encounter the volume integrals of vector functions, which we define by
+\[\iiint_{\mathcal{V}}\vec{v}d\tau=\iiint_{\mathcal{V}}(v_x\hat{x}+v_y\hat{y}+v_z\hat{z})d\tau=\hat{x}\iiint_{\mathcal{V}} v_xd\tau+\hat{y}\iiint_{\mathcal{V}} v_yd\tau+\hat{z}\iiint_{\mathcal{V}} v_zd\tau.\]
+Here, since $\hat{x}$, $\hat{y}$, and $\hat{z}$ are constants, we took them out of the integral.
+
+\subsection{The Fundamental Theorem of Calculus}
+
+Recall that for a function $f(x)$ of one variable $x$, we have that
+
+\begin{theorem}[Fundamental Theorem of Calculus]
+\[\int_a^b\left(\frac{df}{dx}\right)dx=f(b)-f(a).\]
+\end{theorem}
+
+Geometrically, this is because $\frac{df}{dx}\cdot dx=df$ is simply the small change in $f$ after walking a small $dx$; of course if you walk the whole way from $a$ to $b$, we get the entire change in $f$ from $a$ to $b$, which is just $f(b)-f(a)$.
+
+\begin{moral}
+All fundamental theorems presented in this section will have the following form: the integral of some derivative of a function in a region is given by the value of that function at the boundary of the region.
+\end{moral}
+
+In the fundamental theorem of calculus, we are taking the integral of the standard derivative of $f$ over the region $[a,b]$, and it turns out to be given by the (sum of the) value of the function on the boundary $\partial([a,b])=\{a,b\}$.
+
+\subsection{The Fundamental Theorem for Gradients}
+
+\begin{theorem}[Fundamental Theorem for Gradients]
+\[\int_{\vec{a}}^{\vec{b}}(\nabla T)\cdot d\vec{\ell}=T(\vec{b})-T(\vec{a}).\]
+\end{theorem}
+
+The intuition for this is essentially the same as for the fundamental theorem of calculus: the $(\nabla T)\cdot d\vec{\ell}$ on the left hand side give the small change in $T$ as we walk along the path from $\vec{a}$ to $\vec{b}$; summing up these changes gives the total difference in $T$ from $\vec{a}$ to $\vec{b}$.
+
+This gives two important corollaries:
+
+\begin{corollary}
+    Line integrals of gradients are path independent (for forces, what we call \textit{conservative}). In particular,
+    \[\int_{\vec{a}}^{\vec{b}}(\nabla T)\cdot d\vec{\ell}\]
+    is independent of the path taken from $\vec{a}$ to $\vec{b}$.
+\end{corollary}
+
+\begin{corollary}
+    The loop integral of a gradient is equal to zero:
+    \[\oint (\nabla T)\cdot d\vec{\ell}=0.\]
+\end{corollary}
+
+\subsection{The Fundamental Theorem for Divergences}
+
+\begin{theorem}[Fundamental Theorem for Divergences]
+    \[\iiint_{\mathcal{V}}(\nabla\cdot \vec{v})d\tau=\oiint_{\partial\mathcal{V}}\vec{v}\cdot d\vec{a}.\]
+    Note that $\partial\mathcal{V}$ is the closed surface bounding the volume $\mathcal{V}$.
+\end{theorem}
+
+I may refer to this theorem as either Gauss' Theorem or the divergence theorem.
+
+Recall that if we allow $\vec{v}$ to represent the flow of a fluid, then places of positive divergence $\nabla\cdot\vec{v}>0$ represent ``faucets" where fluid is injected and places of negative divergence $\nabla\cdot\vec{v}<0$ represent ``drains" where fluid is removed. The magnitude of the divergence in these cases represent how powerful the faucets or drains are; therefore, it makes sense that if we sum the divergence up across the entire volume, we get the total amount of fluid leaving (or entering) the volume $\mathcal{V}$ through the surface, i.e. the flux through $\partial \mathcal{V}$.
+
+\subsection{The Fundamental Theorem for Curls}
+
+\begin{theorem}[Fundamental Theorem for Curls]
+    \[\iint_\mathcal{S}(\nabla\times\vec{v})\cdot d\vec{a}=\oint_{\partial \mathcal{S}}\vec{v}\cdot d\vec{\ell}.\]
+\end{theorem}
+
+I may refer to this theorem as Stokes' Theorem.
+
+The intuition for this can come from fluid flow as well: the curl $\nabla\times\vec{v}$ represents how much the fluid swirls in the surface $\mathcal{S}$; summing up these little swirls gives the total circulation of the line integral around the boundary of the surface $\partial\mathcal{S}$. The following image from Griffiths is a good depiction:
+
+\begin{center}
+    \includegraphics[width=8cm]{Electrodynamics/images/stokes.PNG}
+\end{center}
+
+Note that in this theorem, there is ambiguity in picking the direction of $d\vec{a}$ and also the direction to go in the loop integral on the right hand side. However, it suffices to simply be consistent! Use the right hand rule: if your fingers curl around in the direction that $d\vec{\ell}$ travels, your thumb marks the direction of $d\vec{a}$.
+
+Similar to the fundamental theorem for gradients, this gives two important corollaries:
+
+\begin{corollary}
+    Surface integrals of curls are independent of the particular surface chosen. In particular
+    \[\iint_{\mathcal{S}}(\nabla\times\vec{v})\cdot d\vec{a}\]
+    depends only on $\partial\mathcal{S}$.
+\end{corollary}
+
+\begin{corollary}
+    The integral of curls over a closed surface is equal to zero:
+    \[\oiint (\nabla\times\vec{v})\cdot d\vec{a}=0.\]
+\end{corollary}
+
+\subsection{Integration by Parts}
+
+Recall that the basic technique of integration by parts utilizes the product rule of derivatives:
+\[\frac{d}{dx}(fg)=f\left(\frac{dg}{dx}\right)+g\left(\frac{df}{dx}\right).\]
+Integrating both sides from $a$ to $b$ with respect to $dx$ gives
+\[\left.fg\right\rvert_{a}^b=\int_a^bf\left(\frac{dg}{dx}\right)dx+\int_a^bg\left(\frac{df}{dx}\right)dx.\]
+Rearranging gives
+\[\boxed{\int_a^bf\left(\frac{dg}{dx}\right)dx=-\int_a^bg\left(\frac{df}{dx}\right)dx+\left.fg\right\rvert_a^b}.\]
+Essentially, if you're integrating the product of one function $f$ and the \textit{derivative} of another function $g$, you can transfer the derivative from $g$ to $f$ at the cost of a boundary term of $fg$ on $\partial([a,b])=\{a,b\}$.
+
+It turns out that you can exploit the product rules of vector calculus in the same way. For example, take the product rule for the divergence of a scalar times a vector:
+\[\nabla\cdot(f\vec{v})=f(\nabla\cdot \vec{v})+\vec{v}\cdot(\nabla f).\]
+By integrating over a volume, we can abuse Gauss' Law on the left hand side:
+\[\iiint_{\mathcal{V}}\nabla\cdot(f\vec{v})d\tau=\iiint_{\mathcal{V}}f(\nabla\cdot \vec{v})d\tau+\iiint_{\mathcal{V}}\vec{v}\cdot(\nabla f)d\tau.\]
+The left hand side reduces to
+\[\oiint_{\partial\mathcal{V}}f\vec{v}\cdot d\vec{a},\]
+so we can write
+\[\boxed{\iiint_{\mathcal{V}}f(\nabla\cdot\vec{v})d\tau=-\iiint_{\mathcal{V}}\vec{v}\cdot(\nabla f)d\tau+\oiint_{\partial\mathcal{V}}f\vec{v}\cdot d\vec{a}}.\]
+Notice how this has the same form as vanilla integration by parts: we can transfer a derivative (in this case a divergence) from $\vec{v}$ to $f$ (it turns into a gradient) at the cost of a boundary term.
+
+It turns out that integration by parts is actually one of the most powerful tools in vector calculus; there are two other forms presented in the problem below:
+
+\section{Curvilinear Coordinates}
+
+\subsection{Spherical Coordinates}
+
+Recall that instead of Cartesian coordinates, you can also label points in space using \vocab{spherical coordinates} $(r,\theta,\varphi)$. We use physics convention here, where $r=|\vec{r}|$ is the distance to the origin; $\theta$ is the \vocab{polar angle}, the angle between $\vec{r}$ and the $z$-axis; and $\varphi$ is the \vocab{azimuthal angle}, the angle around from the $x$-axis. 
+
+We can easily relate these to Cartesian coordinates:
+\[x=r\sin\theta\cos\varphi, \qquad y=r\sin\theta\sin\varphi, \qquad z=r\cos\theta.\]
+It turns out that the unit vectors $\hat{r}$, $\hat{\theta}$, and $\hat{\varphi}$ form an orthonormal basis of $\mathbb{R}^3$. Hence you can express any vector $\vec{a}$ as
+\[\vec{a}=a_r\hat{r}+a_\theta\hat{\theta}+a_\varphi\hat{\varphi}.\]
+It is not too hard to check that
+\[
+\begin{cases}
+\hat{r}=\sin\theta\cos\varphi\cdot \hat{x}+\sin\theta\sin\varphi\cdot\hat{y}+\cos\theta\cdot\hat{z},\\
+\hat{\theta}=\cos\theta\cos\varphi\cdot\hat{x}+\cos\theta\sin\varphi\cdot\hat{y}-\sin\theta\cdot\hat{z},\\
+\hat{\varphi}=-\sin\varphi\cdot\hat{x}+\cos\varphi\cdot\hat{y}.
+\end{cases}
+\]
+
+However, there is a very important caveat about this coordinate system! The unit vectors $\hat{r}$, $\hat{\theta}$, and $\hat{\varphi}$ are associated with the \textit{particular point} $P$ that is chosen, and they change direction as $P$ moves around! Therefore, unlike $\hat{x}$, $\hat{y}$, and $\hat{z}$, these basis vectors are not constants. 
+
+For example, do not combine the spherical coordinates of vectors associated with different points (e.g. if $\vec{a}$ and $\vec{b}$) are unit vectors pointing in opposite directions, even though $\vec{a}=\hat{r}$ in its own coordinate system and $\vec{b}=\hat{r}$ in its own coordinate system, we still have that $\vec{a}+\vec{b}=\vec{0}$, not $2\hat{r}$). 
+
+In addition, you need to be careful with differentiating a vector in spherical coordinates, since the unit vectors themselves are functions of position, and need to be differentiated (e.g. $\partial \hat{r}/\partial \theta=\hat{\theta}$).  In addition, you cannot take $\hat{r}$, $\hat{\theta}$, or $\hat{\varphi}$ outside of an integral (e.g. as we did right after Definition \ref{defvolint} in the definition of the volume integral of a vector function).
+
+Due to the setup of spherical coordinates, infinitesimal elements of length are
+\[d\vec{\ell}=dr\cdot \hat{r}+rd\theta\cdot \hat{\theta}+r\sin\theta d\varphi\cdot \hat{\varphi}.\]
+We call these respective small steps in the $\hat{r}$, $\hat{\theta}$, and $\hat{\varphi}$ directions $d\ell_r=dr$, $d\ell_\theta=rd\theta$, and $d\ell_\varphi=r\sin\theta d\varphi$. 
+
+Similarly, the infinitesimal elements of volume are also different:
+\[d\tau=d\ell_r d\ell_\theta d\ell_{\varphi}=r^2\sin\theta drd\theta d\varphi,\]
+the product of the scalings $r$ and $r\sin\theta$ that we applied above to the $\hat{\theta}$ and the $\hat{\varphi}$ directions, respectively.
+
+As you can probably imagine, the expression for surface elements is also different, but it's hard to give a general form since it depends on the orientation of the surface. In general, you can always directly analyze the geometry for any given case, but for some examples:
+\begin{itemize}
+    \item If $r$ is constant (e.g. integrating over a sphere), we have
+    \[d\vec{a}=d\ell_\theta d\ell_\varphi\hat{r}=r^2\sin\theta d\theta d\varphi\hat{r}.\]
+    \item If the surface lies in the $xy$ plane so that $\theta$ is constant, then
+    \[d\vec{a}=d\ell_r d\ell_\varphi\hat{\theta}=rdrd\varphi\hat{\theta}.\]
+\end{itemize}
+Finally, we note that $r\in [0,\infty)$, $\varphi\in[0,2\pi]$, and $\theta\in[0,\pi]$.
+
+\begin{example}
+Find the volume of a sphere of radius $R$.
+\end{example}
+
+\begin{proof}[Solution]
+Integrate
+\begin{align*}
+    V&=\iiint_{\mathcal{V}}d\tau=\int_{r=0}^R\int_{\varphi=0}^{2\pi}\int_{\theta=0}^\theta (r^2\sin\theta) d\theta d\varphi dr\\
+    &=\left(\int_{0}^R r^2 dr\right)\left(\int_0^{2\pi} d\varphi\right)\left(\int_0^{\pi}\sin\theta d\theta\right)\\
+    &=\left(\frac{R^3}{3}\right)(2\pi)(2)=\frac{4}{3}\pi R^3,
+\end{align*}
+as expected.
+\end{proof}
+
+Alright, that finishes a discussion of the \textit{geometry} of spherical coordinates. However, we still need to translate all the vector derivatives we've already discussed. Brute forcing thing would be quite hard, but Appendix describes a much more efficient method, which happens to treat all coordinate systems at once (I haven't taken notes for this, but maybe will in the future).
+
+In any case, let's cut to the chase and just give the formulas:
+
+\begin{proposition}[Vector derivatives in spherical coordinates]
+    \begin{itemize}
+        \item[]
+        \item Gradient:
+        \[\nabla T=\frac{\partial T}{\partial r}\hat{r}+\frac{1}{r}\frac{\partial T}{\partial\theta}\hat{\theta}+\frac{1}{r\sin\theta}\frac{\partial T}{\partial\varphi}\hat{\varphi}.\]
+        \item Divergence:
+        \[\nabla\cdot\vec{v}=\frac{1}{r^2}\frac{\partial}{\partial r}(r^2v_r)+\frac{1}{r\sin\theta}\frac{\partial}{\partial\theta}(\sin\theta v_\theta)+\frac{1}{r\sin\theta}\frac{\partial v_\varphi}{d\varphi}.\]
+        \item Curl:
+        \begin{align*}
+            \nabla\times\vec{v}&=\frac{1}{r\sin\theta}\left[\frac{\partial}{\partial\theta}(\sin\theta v_\varphi)-\frac{\partial v_\theta}{\partial \varphi}\right]\hat{r}+\frac{1}{r}\left[\frac{1}{\sin\theta} \frac{\partial v_r}{\partial \varphi}-\frac{\partial}{\partial r}(rv_\varphi)\right]\hat{\theta}\\
+            &+\frac{1}{r}\left[\frac{\partial}{\partial r}(rv_\theta)-\frac{\partial v_r}{\partial \theta}\right]\hat{\varphi}.
+        \end{align*}
+        \item Laplacian:
+        \[\nabla^2 T=\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial T}{\partial r}\right)+\frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta\frac{\partial T}{\partial \theta}\right)+\frac{1}{r^2\sin^2\theta}\frac{\partial^2T}{\partial \varphi^2}.\]
+    \end{itemize}
+\end{proposition}
+
+\subsection{Cylindrical Coordinates}
+
+Another method of labeling $\mathbb{R}^3$ is using \vocab{cylindrical coordinates} $(s,\varphi,z)$; where we simply project $P$ down to the $xy$-plane and assign polar coordinates $(s,\varphi)$ to the projection, then let $z$ be the height off the $xy$-plane along the $z$-axis. These relate by
+\[x=s\cos\varphi,\qquad y=s\sin\varphi, \qquad z=z.\]
+The unit vectors can be written as
+\[\begin{cases}
+\hat{s}= \cos\varphi\hat{x}+\sin\varphi\hat{y},\\
+\hat{\varphi}=-\sin\varphi\hat{x}+\cos\varphi\hat{y},\\
+\hat{z}=\hat{z}.
+\end{cases}\]
+Infinitesimal elements of length are
+\[d\vec{\ell}=ds\cdot\hat{s}+sd\varphi\cdot \hat{\varphi}+dz\cdot\hat{z},\]
+where the respective small steps in the $\hat{s}$, $\hat{\varphi}$, and $\hat{z}$ directions are $d\ell_s=ds$, $d\ell_\varphi=sd\varphi$, and $d\ell_z=dz$.
+
+Hence, the volume element is
+\[d\tau=sdsd\varphi dz.\]
+Finally, note that $s\in[0,\infty)$, $\varphi\in[0,2\pi]$, and $z\in(-\infty,\infty)$.
+
+\begin{proposition}[Vector derivatives in cylindrical coordinates]
+    \begin{itemize}
+        \item[]
+        \item Gradient:
+        \[\nabla T=\frac{\partial T}{\partial s}\hat{s}+\frac{1}{s}\frac{\partial T}{\partial\varphi}\hat{\varphi}+\frac{\partial T}{\partial z}\hat{z}.\]
+        \item Divergence:
+        \[\nabla\cdot\vec{v}
+        =\frac{1}{s}\frac{\partial}{\partial s}(sv_s)+\frac{1}{s}\frac{\partial v_\varphi}{\partial\varphi}+\frac{\partial v_z}{\partial z}.\]
+        \item Curl:
+        \[\nabla\times \vec{v}=\left(\frac{1}{s}\frac{\partial v_z}{\partial\varphi}-\frac{\partial v_\varphi}{\partial z}\right)\hat{s}+\left(\frac{\partial v_s}{\partial z}-\frac{\partial v_z}{\partial s}\right)\hat{\varphi}+\frac{1}{s}\left[\frac{\partial}{\partial s}(sv_\varphi)-\frac{\partial v_s}{\partial\varphi}\right]\hat{z}.\]
+        \item Laplacian:
+        \[\nabla^2 T=\frac{1}{s}\frac{\partial}{\partial s}\left(s\frac{\partial T}{\partial s}\right)+\frac{1}{s^2}\frac{\partial^2T}{\partial\varphi^2}+\frac{\partial^2T}{\partial z^2}.\]
+    \end{itemize}
+\end{proposition}
+
+\section{The Dirac Delta Function}
+
+\subsection{The Divergence of $\hat{r}/r^2$}
+
+Major apparent paradox: consider 
+\[\vec{v}=\frac{1}{r^2}\hat{r}.\]
+This function has all arrows pointing outwards; if any vector function would have positive divergence, this is it! Yet, if we calculate the divergence anywhere, we get
+\[\nabla\cdot\vec{v}=\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\cdot\frac{1}{r^2}\right)=0.\]
+What's going on? In fact, it gets even worse if we try applying the divergence theorem. Integrating over a sphere $\mathcal{V}$ of radius $R$ centered at the origin, the surface integral is
+\begin{align*}
+\oiint_{\partial \mathcal{V}}\vec{v}\cdot d\vec{a}&=\oiint_{\partial\mathcal{V}}\left(\frac{1}{R^2}\hat{r}\right)\cdot (R^2\sin\theta d\varphi d\theta\cdot \hat{r})\\
+&=\int_0^\pi \int_0^{2\pi} \sin\theta d\varphi d\theta\\
+&=2\pi\cdot\int_0^\pi\sin\theta d\theta=4\pi.
+\end{align*}
+And yet
+\[\iiint_{\mathcal{V}}(\nabla\cdot\vec{v}) d\tau=0,\]
+so what's going on? Are we to believe that the divergence theorem is false?
+
+The solution is where $r=0$: the divergence must blow up there. It turns out that $\nabla\cdot \vec{v}$ has the wild property that it vanishes everywhere except one point, yet its integral over any volume including that point is $4\pi$. No ordinary function behaves like this, but it turns out we've stumbled on what is known to physicists as the \vocab{Dirac delta function}.
+
+\subsection{The One-Dimensional Dirac Delta Function}
+
+\begin{definition}
+    The \vocab{one-dimensional Dirac delta function}, $\delta(x)$ can be pictured as an infinitely high, infinitesimally narrow ``spike" at the origin, with area 1. Indeed,
+    \[\delta(x)=\begin{cases}
+    0 & \text{if }x\neq 0\\
+    \infty & \text{if }x=0
+    \end{cases}\]
+    and
+    \[\int_{-\infty}^\infty\delta(x)dx=1.\]
+    If $x$ has units meters, then $\delta(x)$ has units $(\text{meters})^{-1}$.
+\end{definition}
+
+In reality, $\delta(x)$ is not a function since its value at $0$ isn't finite: instead, it's a \vocab{generalized function}, or \vocab{distribution}. It is a \textit{limit} of a \textit{sequence} of functions, say rectangles with height $n$ and width $1/n$, or isosceles triangles of height $n$ and base $2/n$, centered at the origin (as $n\to\infty$).
+
+Note that for an ordinary (continuous) function $f$, we have
+\[f(x)\delta(x)=f(0)\delta(x),\]
+as their product is 0 whenever $x\neq 0$. Hence
+\[\int_{-\infty}^\infty f(x)\delta(x)dx=f(0)\int_{-\infty}^\infty\delta dx=f(0).\]
+Under an integral, the delta function ``picks out" the value of $f(x)$ at $x=0$.
+
+We can shift the spike anywhere with $\delta(x-a)$. Then
+\[\boxed{\int_{-\infty}^{\infty}f(x)\delta(x-a)dx=f(a)}.\]
+This is so important that I've boxed it.
+
+\begin{example}
+Evaluate the integral
+\[\int_0^3x^3\delta(x-2)dx.\]
+What if the upper bound was 1 instead?
+\end{example}
+
+\begin{proof}[Solution]
+The delta function picks out the value of $x^3$ at $2$, which is $\boxed{8}$. If the upper bound was 1 instead, we wouldn't catch the spike since $2\not\in[0,1]$; hence the integral would be 0.
+\end{proof}
+
+So in fact, you should really think of the delta function as something that is \textbf{always intended for use under and integral sign}. In particular, given two expressions $D_1, D_2$ involving delta function, we say that they're considered equal if
+\[\int_{-\infty}^\infty f(x)D_1(x)dx=\int_{-\infty}^\infty f(x)D_2(x)dx\]
+for \textit{all} functions $f(x)$.
+
+Note that this is because if $D_1$ and $D_2$ were to differ around the neighborhood of some point $x=x'$, then we could just pick $f(x)$ to have a large spike at $x'$, and then the integrals wouldn't be equal anymore.
+
+By $u$-substitution, it can also be shown that
+\[\delta(kx)=\frac{1}{|k|}\delta(x).\]
+This makes sense, as the factor of $k$ makes it so that you're ``passing through" $\RR$ $k$ times as fast, so you expect to pick up $\frac{1}{|k|}$ as much of it.
+
+\subsection{The Three-Dimensional Delta Function}
+
+If we write $\vec{r}=x\hat{x}+y\hat{y}+z\hat{z}$, then we can generalize:
+
+\begin{definition}
+    The \vocab{three-dimensional Dirac delta function} is defined as
+    \[\delta^3(\vec{r})=\delta(x)\delta(y)\delta(z).\]
+    It is zero everywhere except the origin, where it blows up, and its volume integral is 1:
+    \[\iiint_{\mathbb{R}^3}\delta^3(\vec{r})d\tau=\int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\delta(x)\delta(y)\delta(z)=1.\]
+\end{definition}
+
+In addition, we have that
+
+\[\boxed{\iiint_{\mathbb{R}^3}f(\vec{r})\delta^3(\vec{r}-\vec{a})d\tau=f(\vec{a})}.\]
+
+To resolve the paradox at the start of this section, we can note that
+\[\nabla\cdot\left(\frac{\hat{r}}{r^2}\right)=4\pi\delta^3(\vec{r}).\]
+More generally,
+\[\boxed{\nabla\cdot\left(\frac{\hat{\scr}}{\scr^2}\right)=4\pi\delta^3(\vec{\scr})},\]
+where, recall, $\vec{\scr}=\vec{r}-\vec{r'}$ for some source $\vec{r'}$. Also, since $\nabla\left(\frac{1}{\scr}\right)=-\frac{\vec{\scr}}{\scr^2}$, we have that its Laplacian is
+\[\nabla^2\frac{1}{\scr}=-4\pi\delta^3(\vec{\scr}).\]
+
+\section{The Theory of Vector Fields}
+
