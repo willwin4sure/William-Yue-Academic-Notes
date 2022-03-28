@@ -698,5 +698,101 @@ More generally,
 where, recall, $\vec{\scr}=\vec{r}-\vec{r'}$ for some source $\vec{r'}$. Also, since $\nabla\left(\frac{1}{\scr}\right)=-\frac{\vec{\scr}}{\scr^2}$, we have that its Laplacian is
 \[\nabla^2\frac{1}{\scr}=-4\pi\delta^3(\vec{\scr}).\]
 
+\begin{example}
+Evaluate the integral
+\[J=\iiint_{\mathcal{V}}(r^2+2)\nabla\cdot\left(\frac{\hat{r}}{r^2}\right)d\tau,\]
+where $\mathcal{V}$ is a ball of radius $R$ centered at the origin.
+\end{example}
+
+We present two solutions to this problem: one that demonstrates the Dirac delta function which was just introduced, and another that demonstrates the power of integration by parts.
+
+\begin{proof}[Solution 1]
+Rewrite
+\[J=\iiint_{\mathcal{V}}(r^2+2)\cdot 4\pi\delta^3(\vec{r})d\tau = 4\pi(0^2+2)=\boxed{8\pi}.\]
+\end{proof}
+
+\begin{proof}[Solution 2]
+Use integration by parts to transfer the derivative:
+\[J=-\iiint_{\mathcal{V}}\nabla(r^2+2)\cdot\frac{\hat{r}}{r^2}d\tau+\oiint_{\partial\mathcal{V}}(r^2+2)\cdot\frac{\hat{r}}{r^2}\cdot d\vec{a}.\]
+For the first term, note that the gradient is 
+\[\nabla(r^2+2)=\frac{\partial}{\partial r}(r^2+2)\hat{r}=2r\cdot\hat{r},\]
+so
+\[-\iiint_{\mathcal{V}}\nabla(r^2+2)\cdot\frac{\hat{r}}{r^2}d\tau=-4\pi\int_0^R\frac{2}{r}\cdot r^2dr=-4\pi R^2.\]
+Meanwhile, in the surface integral, we have $d\vec{a}=r^2\sin\theta d\varphi d\theta\cdot \hat{r}$ and $r=R$, so it equals
+\[\int_{\varphi=0}^{2\pi}\int_{\theta=0}^\pi (R^2+2)d\theta d\varphi=4\pi(R^2+2).\]
+Therefore, their sum is
+\[J=-4\pi r^2+4\pi(R^2+2)=\boxed{8\pi},\]
+which matches.
+\end{proof}
+
 \section{The Theory of Vector Fields}
+
+\subsection{The Helmholtz Theorem}
+
+To what extent is a vector function determined by its divergence and curl? If I tell you the divergence of $\vec{F}$ is a certain scalar function $D$,
+\[\nabla\cdot\vec{F}=D,\]
+and the curl of $\vec{F}$ is a certain vector function $\vec{C}$,
+\[\nabla\times\vec{F}=\vec{C},\]
+can you determine $\vec{F}$? 
+
+\begin{remark}
+Note here that $\vec{C}$ must satisfy $\nabla\cdot\vec{C}=0$, since the divergence of any curl vanishes.
+\end{remark}
+
+And the answer is... \textbf{NOPE!} For example, there are many functions with no divergence or curl. To solve such a differential equation (as with any other differential equation), you must be supplied with \textbf{boundary conditions}.  Generally, we simply require that fields go to zero infinitely far away in any direction (from all charges in the problem); with this information, \vocab{Helmholtz theorem} guarantees that the field is uniquely determined by its divergence and curl.
+
+\begin{remark}
+In some special cases, charges themselves extend to infinity (e.g. electric field of an infinite plane of a certain charge density). In these cases, the normal boundary conditions no longer apply; instead, one must invoke symmetry arguments to determine the fields uniquely.
+\end{remark}
+
+\subsection{Potentials}
+
+Recall that the curl of any gradient is equal to zero. Well, it turns out that it works the other away around too.
+
+\begin{definition}
+If a vector field $\vec{F}$ has a curl that vanishes everywhere, then it can be written as the gradient of a scalar function $V$ that we call its \vocab{scalar potential}:
+\[\nabla\times \vec{F}=\vec{0}\quad\Longleftrightarrow\quad \vec{F}=-\nabla V.\]
+\end{definition}
+
+\begin{remark}
+The negative sign is purely for convention, so that forces push you to places of \textit{lower} potential (energy).
+\end{remark}
+
+This definition works because of the following theorem:
+
+\begin{theorem}[Irrotational fields]
+    The following are equivalent:
+    \begin{enumerate}[(1)]
+        \item $\nabla\times\vec{F}=\vec{0}$ everywhere.
+        \item $\int_{\vec{a}}^{\vec{b}}\vec{F}\cdot d\vec{\ell}$ is independent of path, for any given endpoints.
+        \item $\oint \vec{F}\cdot d\vec{\ell}=0$ for any closed loop.
+        \item $\vec{F}$ is the gradient of some scalar function: $\vec{F}=-\nabla V$.
+    \end{enumerate}
+\end{theorem}
+
+The scalar potential is not unique: you can add any constant to $V$ and the gradient will be unaffected.
+
+\begin{definition}
+If a vector field $\vec{F}$ has divergence that vanishes everywhere, then it can be written as the curl of a vector function $\vec{A}$ that we call its \vocab{vector potential}:
+\[\nabla\cdot\vec{F}=0\quad\Longleftrightarrow\quad \vec{F}=\nabla\times\vec{A}.\]
+\end{definition}
+
+This definition also works because of the following (similar) theorem:
+\begin{theorem}[Solenoidal (incompressible) fields]
+    The following are equivalent:
+    \begin{enumerate}[(1)]
+        \item $\nabla\cdot\vec{F}=0$ everywhere.
+        \item $\iint \vec{F}\cdot d\vec{a}$ is independent of surface, for any given boundary line.
+        \item $\oiint \vec{F}\cdot d\vec{a}=0$ for any closed surface.
+        \item $\vec{F}$ is the curl of some vector function: $\vec{F}=\nabla\times\vec{A}$.
+    \end{enumerate}
+\end{theorem}
+
+This vector potential is also not unique: the gradient of any scalar function can be added to $\vec{A}$ without affecting the curl.
+
+It turns out that in all cases, a vector field $\vec{F}$ can be written as the gradient of a scalar plus the curl of a vector:
+\begin{moral}
+We can always write
+\[\vec{F}=-\nabla V+\nabla\times\vec{A}.\]
+\end{moral}
 
