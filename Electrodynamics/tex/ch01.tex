@@ -330,7 +330,7 @@ Like the curl of the gradient, the \textit{divergence} of the curl is always equ
 This can also be easily checked through the definitions of divergence and curl.
 
 \begin{remark}\label{remarkdivcurl}
-There is also an explanation of why this is true by combining the fundamental theorems of divergences and curls (also introduced in the next section). By the fundamental theorem of divergence (Gauss' Theorem), the volume integral of the divergence of the curl of $\vec{v}$ is equal to the surface integral of the curl of $\vec{v}$ over the boundary of the volume. Then, the fundamental theorem of curl (Stokes' Theorem) implies that this closed surface integral equals 0. In symbols,
+There is also an explanation of why this is true by combining the fundamental theorems of divergences and curls (also introduced in the next section). By the fundamental theorem of divergence (Gauss's Theorem), the volume integral of the divergence of the curl of $\vec{v}$ is equal to the surface integral of the curl of $\vec{v}$ over the boundary of the volume. Then, the fundamental theorem of curl (Stokes' Theorem) implies that this closed surface integral equals 0. In symbols,
 \[\iiint_\mathcal{V}\nabla\cdot(\nabla\times \vec{v}) d\tau=\oiint_{\partial\mathcal{V}}(\nabla\times\vec{v})\cdot d\vec{a}=\oint_{\partial^2\mathcal{V}}\vec{v}\cdot d\vec{\ell}=0\]
 since $\partial^2\mathcal{V}=0$.
 \end{remark}
@@ -446,7 +446,7 @@ This gives two important corollaries:
     Note that $\partial\mathcal{V}$ is the closed surface bounding the volume $\mathcal{V}$.
 \end{theorem}
 
-I may refer to this theorem as either Gauss' Theorem or the divergence theorem.
+I may refer to this theorem as either Gauss's Theorem or the divergence theorem.
 
 Recall that if we allow $\vec{v}$ to represent the flow of a fluid, then places of positive divergence $\nabla\cdot\vec{v}>0$ represent ``faucets" where fluid is injected and places of negative divergence $\nabla\cdot\vec{v}<0$ represent ``drains" where fluid is removed. The magnitude of the divergence in these cases represent how powerful the faucets or drains are; therefore, it makes sense that if we sum the divergence up across the entire volume, we get the total amount of fluid leaving (or entering) the volume $\mathcal{V}$ through the surface, i.e. the flux through $\partial \mathcal{V}$.
 
@@ -491,7 +491,7 @@ Essentially, if you're integrating the product of one function $f$ and the \text
 
 It turns out that you can exploit the product rules of vector calculus in the same way. For example, take the product rule for the divergence of a scalar times a vector:
 \[\nabla\cdot(f\vec{v})=f(\nabla\cdot \vec{v})+\vec{v}\cdot(\nabla f).\]
-By integrating over a volume, we can abuse Gauss' Law on the left hand side:
+By integrating over a volume, we can abuse Gauss's Law on the left hand side:
 \[\iiint_{\mathcal{V}}\nabla\cdot(f\vec{v})d\tau=\iiint_{\mathcal{V}}f(\nabla\cdot \vec{v})d\tau+\iiint_{\mathcal{V}}\vec{v}\cdot(\nabla f)d\tau.\]
 The left hand side reduces to
 \[\oiint_{\partial\mathcal{V}}f\vec{v}\cdot d\vec{a},\]
@@ -676,7 +676,7 @@ By $u$-substitution, it can also be shown that
 \[\delta(kx)=\frac{1}{|k|}\delta(x).\]
 This makes sense, as the factor of $k$ makes it so that you're ``passing through" $\RR$ $k$ times as fast, so you expect to pick up $\frac{1}{|k|}$ as much of it.
 
-\subsection{The Three-Dimensional Delta Function}
+\subsection{The Three-Dimensional Delta Function}\label{3ddirac}
 
 If we write $\vec{r}=x\hat{x}+y\hat{y}+z\hat{z}$, then we can generalize:
 
@@ -760,7 +760,7 @@ The negative sign is purely for convention, so that forces push you to places of
 
 This definition works because of the following theorem:
 
-\begin{theorem}[Irrotational fields]
+\begin{theorem}[Irrotational fields]\label{irrotfields}
     The following are equivalent:
     \begin{enumerate}[(1)]
         \item $\nabla\times\vec{F}=\vec{0}$ everywhere.
