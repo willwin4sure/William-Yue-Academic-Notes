@@ -237,17 +237,140 @@ Find the potential inside and outside a spherical shell of radius $R$ that carri
 
 Recall that we can write $\vec{E}=-\nabla V$. However, also recall that we've determined that
 \[\nabla\cdot \vec{E}=\frac{\rho}{\varepsilon_0}\qquad \text{and}\qquad\nabla\times\vec{E}=\vec{0}.\]
+Substituting in $V$ gives
+\[\nabla\cdot (\nabla V)=-\frac{\rho}{\varepsilon_0}.\]
+Recall that the divergence of the gradient is the \textit{Laplacian}. This gives \vocab{Poisson's Equation}.
+
+\begin{theorem}[Poisson's Equation]
+We have
+\[\nabla^2 V=-\frac{\rho}{\varepsilon_0}.\]
+\end{theorem}
+
+In regions with no charge, this reduces to \vocab{Laplace's Equation},
+\[\nabla^2 V=0.\]
+
+What about the fact that $\vec{E}$ is irrotational? Sadly, it doesn't give anything, since the curl of a gradient (of $V$) should always equal $\vec{0}$ anyway.
 
 \subsection{The Potential of a Localized Charge Distribution}
 
+Usually, we want to find $\vec{E}$ from $V$, and $V$ from the charge distribution $\rho$. Sadly, Poisson's Equation is the wrong way around: we can take the Laplacian of $V$ to get $\rho$. Is there some way we can ``invert" Poisson's equation?
+
+Recall that a point charge $q$ at the origin generates a potential
+\[V(r)=\frac{1}{4\pi\varepsilon_0}\frac{q}{r}.\]
+It turns out that we can generalize this to arbitrary charge distributions:
+\[V(\vec{r})=\frac{1}{4\pi\varepsilon_0}\int\frac{1}{\scr}dq.\]
+For volume charge distributions, $dq=\rho\cdot d\tau'$, so
+\[\boxed{V(\vec{r})=\frac{1}{4\pi\varepsilon_0}\iiint\frac{\rho(\vec{r'})}{\scr}d\tau'}.\]
+This is a solution to Poisson's equation for a localized charge distribution. Similarly, for surface and line charge distributions we get potentials
+\[V=\frac{1}{4\pi\varepsilon_0}\int\frac{\lambda(\vec{r'})}{\scr}d\ell'\qquad\text{and}\qquad V=\frac{1}{4\pi\varepsilon_0}\iint\frac{\sigma(\vec{r'})}{\scr}da'.\]
+Recall once again that this section depends on the fact that the reference point is at infinity.
+
 \subsection{Boundary Conditions}
+
+We have covered the three fundamental quantities in electrostatics: $\rho$, $\vec{E}$, and $V$. We have also derived all six formulas interrelating them, summarized below. All six of these formulas followed from two experimental observations: (1) the principle of superposition and (2) Coulomb's law.
+
+\begin{center}
+    \includegraphics[width=10cm]{Electrodynamics/images/fig2.35.PNG}
+\end{center}
+
+Now onto the point of this section: what happens to $\vec{E}$ and $V$ when you cross a \textit{boundary}, i.e. a surface with charge density $\sigma$. 
+
+It is simple to determine this for $\vec{E}$ using Gauss's law: simply draw a really thin wafer of area $A$ and thickness $\epsilon$ containing the surface; then
+\[\oiint_{\mathcal{S}}\vec{E}\cdot d\vec{a}=\frac{Q_{\text{enc}}}{\varepsilon_0}=\frac{\sigma A}{\varepsilon_0}.\]
+Even if there are other electric charges in the area, the flux through the sides of the pillbox is 0 as we take $\epsilon\to 0$. Hence, the difference in the normal component of the electric field below and the \textit{normal} component (obtained after dotting with $d\vec{a}$) of the electric field above is $\frac{\sigma}{\varepsilon_0}$. Note that this is true for a single infinitely flat plane with surface charge density $\sigma$ as well: the electric fields are both of magnitude $\frac{\sigma}{2\varepsilon_0}$, but pointing in opposite directions.
+
+However, the \textit{tangential} component of $\vec{E}$ is \textit{always} continuous. After all, the loop integral of $\vec{E}$ is always $0$, so if we considered a small loop that is the along the side of the pillbox (so length $\ell$ parallel to the surface and length $\epsilon$ through the surface), then we see that the tangential components must be equal (since their difference is 0).
+
+Hence, we can summarize:
+\[\vec{E}_{\text{above}}-\vec{E}_{\text{below}}=\frac{\sigma}{\varepsilon_0}\hat{n},\]
+where $\hat{n}$ is a unit vector pointing from below to above.
+
+On the other hand, the potential is continuous across \textit{any} boundary, since the difference in $V$ is given by the path integral of $\vec{E}$, but since the path length shrinks to zero, so too does the integral:
+\[V_{\text{above}}-V_{\text{below}}=-\int_{\text{below}}^{\text{above}}\vec{E}\cdot d\vec{\ell}=0.\]
+
+The \textit{gradient} of $V$ keeps the discontinuity though, so
+\[\nabla V_{\text{above}}-\nabla V_{\text{below}}=-\frac{\sigma}{\varepsilon_0}\hat{n}.\]
+More conveniently, we can consider the $\hat{n}$ component of both sides by taking the dot product with $\hat{n}$, recalling that the dot product of the gradient of $V$ with a unit vector gives the rate of change of $V$ along the direction of that unit vector:
+\[\frac{\partial V}{\partial n}=(\nabla V)\cdot\hat{n};\]
+in this case, we call it the \vocab{normal derivative} of $V$, i.e. the rate of change of $V$ in the direction perpendicular (normal) to the surface. Hence, we can write
+\[\frac{\partial V_{\text{above}}}{\partial n}-\frac{\partial V_{\text{below}}}{\partial n}=-\frac{\sigma}{\varepsilon_0}.\]
 
 \section{Work and Energy in Electrostatics}
 
 \subsection{The Work It Takes to Move a Charge}
 
+Suppose we have a \textit{stationary} configuration of source charges, and want to move a test charge $Q$ from $\vec{a}$ to $\vec{b}$. How much work will we have to do?
+
+Well, the force at any point is given by $\vec{F}=Q\vec{E}$; so you need to exert $-Q\vec{E}$. Hence the needed work is
+\[W=\int_{\vec{a}}^{\vec{b}}\vec{F}\cdot d\vec{\ell}=-Q\int_{\vec{a}}^{\vec{b}}\vec{E}\cdot d\vec{\ell}=Q[V(\vec{b})-V(\vec{a})].\]
+As $\nabla\times \vec{E}=\vec{0}$, this answer is independent of the path from $\vec{a}$ to $\vec{b}$: therefore, we call the electrostatic force \textit{conservative}.
+
+Hence,
+\[V(\vec{b})-V(\vec{a})=\frac{W}{Q}.\]
+This gives us another view of potential:
+\begin{moral}
+The potential difference between points $\vec{a}$ and $\vec{b}$ is equal to the work per unit charge required to carry a particle from $\vec{a}$ to $\vec{b}$.
+\end{moral}
+In particular, if you want to bring $Q$ in from far away at stick it at $\vec{r}$, you must do work $W=Q\cdot V(\vec{r})$ (as we set our reference point at infinity). In this sense, potential is \textit{potential energy per unit charge} of a single particle moving within a field generated by stationary source charges.
+
 \subsection{The Energy of a Point Charge Distribution}
+
+But what we want to assemble an entire \textit{collection} of point charges? How much work would we need?
+
+The first charge $q_1$ takes zero work: there's nothing to help or fight against. Bringing in $q_2$ will cost $q_2V_1(\vec{r_2})$, where $V_1$ is the potential due to $q_1$, which is then evaluated at $\vec{r_2}$:
+\[W_2=\frac{1}{4\pi \varepsilon_0}\frac{q_1q_2}{\scr_{12}},\]
+where $\scr_{12}$ is the distance from $\vec{r_1}$ to $\vec{r_2}$. Moving in $q_3$ then takes
+\[W_3=\frac{1}{4\pi\varepsilon_0}\frac{q_1q_3}{\scr_{13}}+\frac{1}{4\pi\varepsilon_0}\frac{q_2q_3}{\scr_{23}},\]
+and so on. Continuing this pattern, the total work necessary is
+\[W=\frac{1}{4\pi \varepsilon_0}\sum_{i=1}^n\sum_{j=i+1}^n\frac{q_iq_j}{\scr_{ij}}=\frac{1}{8\pi\varepsilon_0}\sum_{i=1}^n\sum_{j\neq i}^n\frac{q_iq_j}{\scr_{ij}}.\]
+This is equal to
+\begin{equation}\label{pointchargeenergy}
+\frac{1}{2}\sum_{i=1}^nq_i\left(\sum_{j\neq i}^n\frac{1}{4\pi\varepsilon_0}\frac{q_i}{\scr_{ij}}\right)=\frac{1}{2}\sum_{i=1}^nq_iV(\vec{r_i}).
+\end{equation}
+This is exactly half of what you'd expect if you just added the work of placing any point charge into the configuration (holding everything else and their generated potential fixed).
+
+This value represents the energy stored in the system of charges (avoiding the annoying term \textit{``potential" energy}).
 
 \subsection{The Energy of a Continuous Charge Distribution}
 
+For a volume charge density $\rho$, this becomes
+\[W=\frac{1}{2}\iiint_{\mathbb{R}^3}\rho Vd\tau.\]
+There is actually a wonderful way to rewrite this equation to get rid of $\rho$ and $V$ in place of $\vec{E}$. First, use Gauss's law to convert $\rho$ to $\vec{E}$:
+\[\rho=\varepsilon_0
+\nabla\cdot \vec{E}\implies W=\frac{\varepsilon_0}{2}\iiint_{\mathbb{R}^3}(\nabla\cdot \vec{E})Vd\tau.\]
+Now, use integration by parts to transfer the derivative from $\vec{E}$ to $V$:
+\[W=\frac{\varepsilon_0}{2}\left[-\iiint_{\mathbb{R}^3}E\cdot(\nabla V)d\tau+\oiint_{\partial \mathbb{R}^3}V\vec{E}\cdot d\vec{a}\right].\]
+Wait a second... what's $\partial \RR^3$? Well... if we expand the volume containing charge over and over then the surface integral will drop to $0$ since area grows with $r^2$ but $V$ falls off with $1/r$ and $\vec{E}$ falls off with $1/r^2$.
+
+Now we can use $\nabla V=-\vec{E}$ to get
+\begin{equation}\label{energyelectric}
+W=\frac{\varepsilon_0}{2}\iiint_{\RR^3}E^2d\tau.
+\end{equation}
+The energy stored in an electric field per unit volume, then, is $\frac{\varepsilon_0E^2}{2}$.
+
 \subsection{Comments on Electrostatic Energy}
+
+\paragraph{A perplexing ``inconsistency".} The equation 
+\[W=\iiint\frac{\varepsilon_0 E^2}{2}d\tau\]
+seems to imply that the energy of a stationary charge distribution is \textit{always positive}. Yet the energy of two equal but opposite charges a distance $\scr$ apart is apparently negative quantity $-(1/4\pi\varepsilon_0)(q^2/\scr)$, according to Equation \ref{pointchargeenergy}.
+
+What's going on? Well, \textit{both are correct}. The problem here is that the energy in $-(1/4\pi\varepsilon_0)(q^2/\scr)$ \textbf{doesn't take into account the energy necessary to \textit{create} the point charges} (it supposes the point charges are already given, we're just assembling them), while Equation \ref{energyelectric} does. 
+
+This is good, in fact, as the energy of a point charge is actually \textit{infinite}. By Equation \ref{energyelectric},
+\begin{align*}
+W&=\frac{\varepsilon_0}{2}\iiint_{\mathbb{R}^3}\frac{1}{(4\pi\varepsilon_0)^2}\cdot \frac{q^2}{r^4}d\tau\\
+&=\frac{q^2}{32\pi^2\varepsilon_0}\int_{\varphi=0}^{2\pi}\int_{\theta=0}^\pi\int_{r=0}^\infty \frac{1}{r^4}\cdot r^2\sin\theta drd\theta d\varphi.\\
+&=\frac{q^2}{8\pi\varepsilon_0}\int_0^\infty \frac{1}{r^2}dr=\infty.
+\end{align*}
+
+So Equation \ref{energyelectric} is more \textit{complete} in giving the total energy stored in the charge configuration. Yet for point charges, as we've seen, we definitely shouldn't include this, so Equation \ref{pointchargeenergy} assumes the point charges are already made (e.g. electrons), and cannot be taken apart. So the energy inside them doesn't matter.
+
+\paragraph{Where is the energy stored?} Is the energy stored in the charge, or in the field? Presently, this is an unanswerable question: we can compute \textit{what} the total energy is, and several ways to compute it, but worrying \textit{where} it is is irrelevant. In radiation theory and general relativity, it is useful to regard the energy as stored in the field with energy density $\frac{\varepsilon E^2}{2}$ per unit volume.
+
+However, in electrostatics, we can just as well say that the energy is stored in the charge, with density $\frac{1}{2}\rho V$.
+
+\paragraph{The superposition principle.} Because electrostatic energy is \textit{quadratic} in the fields, it does \textit{not} obey a superposition principle. The energy of a compound system is \textit{not} the sum of the energies of its parts considered equally, as there are cross terms:
+\[W_{\text{tot}}=\frac{\varepsilon_0}2\iiint (\vec{E_1}+\vec{E_2})^2d\tau=W_1+W_2+\varepsilon_0\iiint \vec{E_1}\cdot\vec{E_2}d\tau.\]
+For example, if you double the charge everywhere, you quadruple the total energy.
+
+
