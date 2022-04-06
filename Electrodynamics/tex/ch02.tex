@@ -191,8 +191,13 @@ Since $\nabla\times\vec{E}=\vec{0}$, there exists some scalar field $V$ such tha
 
 If we agree on some standard reference point $\mathcal{O}$ in the plane, then it turns out the function
 \[V(\vec{r}):=-\int_{\mathcal{O}}^{\vec{r}} \vec{E}(\vec{r'})\cdot d\vec{\ell'}.\]
-Since $\vec{E}$ is path-independent, this integral depends only on $\vec{r}$. In particular, the potential \textit{difference} between any two points $\vec{a}$ and $\vec{b}$ is simply
+Since $\vec{E}$ is path-independent, this integral depends only on $\vec{r}$. In particular:
+
+\begin{proposition}
+The potential \textit{difference} between any two points $\vec{a}$ and $\vec{b}$ is simply
 \[V(\vec{b})-V(\vec{a})=-\int_{\vec{a}}^{\vec{b}}\vec{E}\cdot d\vec{\ell}.\]
+\end{proposition}
+
 This is equivalent to $\vec{E}=-\nabla V$ by the fundamental theorem of gradients:
 \[V(\vec{b})-V(\vec{a})=\int_{\vec{a}}^{\vec{b}}(\nabla V)\cdot d\vec{\ell}.\]
 
@@ -265,7 +270,7 @@ This is a solution to Poisson's equation for a localized charge distribution. Si
 \[V=\frac{1}{4\pi\varepsilon_0}\int\frac{\lambda(\vec{r'})}{\scr}d\ell'\qquad\text{and}\qquad V=\frac{1}{4\pi\varepsilon_0}\iint\frac{\sigma(\vec{r'})}{\scr}da'.\]
 Recall once again that this section depends on the fact that the reference point is at infinity.
 
-\subsection{Boundary Conditions}
+\subsection{Boundary Conditions}\label{boundcond}
 
 We have covered the three fundamental quantities in electrostatics: $\rho$, $\vec{E}$, and $V$. We have also derived all six formulas interrelating them, summarized below. All six of these formulas followed from two experimental observations: (1) the principle of superposition and (2) Coulomb's law.
 
@@ -282,7 +287,7 @@ Even if there are other electric charges in the area, the flux through the sides
 However, the \textit{tangential} component of $\vec{E}$ is \textit{always} continuous. After all, the loop integral of $\vec{E}$ is always $0$, so if we considered a small loop that is the along the side of the pillbox (so length $\ell$ parallel to the surface and length $\epsilon$ through the surface), then we see that the tangential components must be equal (since their difference is 0).
 
 Hence, we can summarize:
-\[\vec{E}_{\text{above}}-\vec{E}_{\text{below}}=\frac{\sigma}{\varepsilon_0}\hat{n},\]
+\[\boxed{\vec{E}_{\text{above}}-\vec{E}_{\text{below}}=\frac{\sigma}{\varepsilon_0}\hat{n}},\]
 where $\hat{n}$ is a unit vector pointing from below to above.
 
 On the other hand, the potential is continuous across \textit{any} boundary, since the difference in $V$ is given by the path integral of $\vec{E}$, but since the path length shrinks to zero, so too does the integral:
@@ -293,7 +298,7 @@ The \textit{gradient} of $V$ keeps the discontinuity though, so
 More conveniently, we can consider the $\hat{n}$ component of both sides by taking the dot product with $\hat{n}$, recalling that the dot product of the gradient of $V$ with a unit vector gives the rate of change of $V$ along the direction of that unit vector:
 \[\frac{\partial V}{\partial n}=(\nabla V)\cdot\hat{n};\]
 in this case, we call it the \vocab{normal derivative} of $V$, i.e. the rate of change of $V$ in the direction perpendicular (normal) to the surface. Hence, we can write
-\[\frac{\partial V_{\text{above}}}{\partial n}-\frac{\partial V_{\text{below}}}{\partial n}=-\frac{\sigma}{\varepsilon_0}.\]
+\[\boxed{\frac{\partial V_{\text{above}}}{\partial n}-\frac{\partial V_{\text{below}}}{\partial n}=-\frac{\sigma}{\varepsilon_0}}.\]
 
 \section{Work and Energy in Electrostatics}
 
@@ -344,7 +349,7 @@ Wait a second... what's $\partial \RR^3$? Well... if we expand the volume contai
 
 Now we can use $\nabla V=-\vec{E}$ to get
 \begin{equation}\label{energyelectric}
-W=\frac{\varepsilon_0}{2}\iiint_{\RR^3}E^2d\tau.
+\boxed{W=\frac{\varepsilon_0}{2}\iiint_{\RR^3}E^2d\tau}.
 \end{equation}
 The energy stored in an electric field per unit volume, then, is $\frac{\varepsilon_0E^2}{2}$.
 
@@ -373,4 +378,151 @@ However, in electrostatics, we can just as well say that the energy is stored in
 \[W_{\text{tot}}=\frac{\varepsilon_0}2\iiint (\vec{E_1}+\vec{E_2})^2d\tau=W_1+W_2+\varepsilon_0\iiint \vec{E_1}\cdot\vec{E_2}d\tau.\]
 For example, if you double the charge everywhere, you quadruple the total energy.
 
+\section{Conductors}
 
+\subsection{Basic Properties}
+
+\begin{definition}
+In an \vocab{insulator}, such as glass or rubber, electrons are not free to move around: they are held closely to particular atoms by short leashes. 
+\end{definition}
+
+\begin{definition}
+In a metallic \vocab{conductor}, con the other hand, one or more electrons per atom are free to roam. (In liquid conductors, ions move).
+\end{definition}
+
+From this definition, we can derive several electrostatic properties:
+
+\paragraph{$\vec{E}=\vec{0}$ inside a conductor.} The general idea is that if not, then the free charges inside the conductor would move to generate an \textit{opposing electric field} that cancels out any external one. This movement of charges occurs practically instantaneously.
+
+\paragraph{$\rho=0$ inside a conductor.} Follow from Gauss's Law: $\rho=\varepsilon_0\nabla\cdot \vec{E}$.
+
+\paragraph{Any net charge resides on the surface.} Where else could the net charge be?
+
+\begin{remark}
+This particular condition is pretty surprising: charges do push each other so it's natural for them to spread out, but placing them all on the boundary seems like a waste of the space inside (shouldn't you at least sprinkle a little charge in the middle?). Nonetheless, it is true that minimizing the energy stored in the system is best done by moving all the charge to the surface.
+\end{remark}
+
+\paragraph{A conductor is an equipotential.} Since the path integral of $\vec{E}$ is $0$, as $\vec{E}$ itself is always $\vec{0}$.
+
+\paragraph{$\vec{E}$ is perpendicular to the surface, just outside a conductor.} Otherwise charge on the conductor would immediately move around to cancel out any tangential component of the electric field. Charge cannot move in the normal direction, of course, since it is confined to the conductor.
+
+\subsection{Induced Charges}
+
+Placing a $+q$ charge near an uncharged (!) conductor will cause them to attract. This is because the $+q$ charge will pull negative charges closer to it and repel positive charges farther away. Since the negative charge in the conductor is closer to the $+q$ charge, we will see a net attractive force.
+
+While the field inside the actual material making up a conductor must be zero, there can be an electric field within any hollow cavities closed off within a conductor. 
+
+However, it turns out that charges within a cavity in a conductor are \textit{electrically isolated from the outside world}: no fields penetrate the conductor, but you can still detect the presence of a charge inside due to charge present on the outer surface of the conductor.
+
+Let's investigate closely what happens: if we have a point charge $+q$ inside a hollow cavity in a conductor, then negative charges will rush to the boundary of the hollow cavity (the inside surface of the conductor), while positive charges will be pushed outward to the outside surface of the conductor. 
+
+\begin{center}
+    \includegraphics[width=6cm]{Electrodynamics/images/fig2.45.PNG}
+\end{center}
+
+If we take a Gaussian surface running entirely through the conductor that encloses the hollow cavity, we know the flux through this surface must be zero (as the electric field along the entire surface is zero). Therefore, the charge enclosed by this Gaussian surface is zero; hence, the inside surface of the conductor surrounding the hollow cavity develops a charge $-q$. Since the conductor started neutral, its outside surface must develop a charge $+q$. 
+
+\begin{example}
+An uncharged spherical conductor centered at the origin has a cavity of some weird shape carved out of it in the inside. Somewhere within the cavity is a charge $q$. What is the field outside the sphere?
+\end{example}
+
+\begin{proof}
+    It turns out the answer depends neither on the shape of the cavity nor the location of the charge! Wild, isn't it. 
+    
+    Indeed, it turns out that any imbalance from the position of $q$ or the shape of the cavity is balanced out by the negative charge developed on the inner surface, and the charge $q$ spread on the outside of the sphere is uniform! Hence, the answer is
+    \[\boxed{\vec{E}=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}\hat{r}}.\]
+\end{proof}
+
+\begin{remark}
+The argument here isn't conclusive. There are \textit{three} fields at work here: $\vec{E}_q$ from the point charge, $\vec{E}_{\text{induced}}$ from the charge of $-q$ on the inside surface of the conductor, and $\vec{E}_{\text{leftover}}$ from the charge of $q$ on the outside surface of the conductor.
+
+We cannot supply a fully rigorous argument yet, but for now, take note that there \textit{exists} a way of distributing the $-q$ on the inner surface so that $\vec{E}_q$ and $\vec{E}_{\text{induced}}$ cancel at any exterior points. Indeed, the same cavity (with the point charge inside) could've been carved out of an insanely large conductor, and the positive charges out the outside just would be too far away to affect the inside, so the first two fields would have to do all the work of cancellation by themselves.
+
+Yet how do we know that this is actually what happens? Well, it turns out that due to some uniqueness theorems of Chapter 3, electrostatics has the property that there is precisely one way of distributing the charge on a conductor so that the field inside is zero. Having found a single \textit{possible} way, we are guaranteed that no alternative exists.
+\end{remark}
+
+If there is no charge inside the cavity, then we can argue that $\vec{E}=0$; indeed, if there was some field line beginning and ending on the cavity wall, integrating across it would violate the fact that all points on the conductor have equal potential. This is the principle behind grounded \vocab{Faraday cages}, which will shield out stray electric fields. In practice, the conductor doesn't even have to be solid; something like chicken wire often suffices.
+
+\subsection{Surface Charge and the Force on a Conductor}
+
+Since the field inside a conductor is zero, and all the charge is concentrated on the surface of the conductor, the boundary conditions from Section \ref{boundcond} require that the field immediately outside the conductor is
+\[\vec{E}=\frac{\sigma}{\varepsilon_0}\hat{n},\]
+where $\hat{n}$ is the unit vector normal to the surface of the conductor. In terms of potential, we get
+\[\frac{\partial V}{\partial n}=-\frac{\sigma}{\varepsilon_0}\]
+for the value of the directional derivative of $V$ in the direction of the normal $\hat{n}$. Hence, if you can determine $\vec{E}$ or $V$, you can calculate the surface charge on a conductor.
+
+In the presence of an electric field, a surface charge will experience a force per unit area of $\vec{f}=\sigma\vec{E}$. But the electric field is \textit{discontinuous} at a surface charge, so what do we use for $\vec{E}$? The answer is the average of the electric field below and above:
+\[\vec{f}=\sigma\vec{E}_{\text{average}}=\frac{1}{2}\sigma(\vec{E}_{\text{above}}+\vec{E}_{\text{below}}).\]
+All this average does is remove any contribution of the surface itself to the electric field (as obviously the patch cannot exert a force on itself).
+
+This argument applies to \textit{any} surface charge; in the particular case of a conductor, the field inside is zero and outside is $\frac{\sigma}{\varepsilon_0}\hat{n}$; hence the force per area is
+\[\vec{f}=\frac{\sigma^2}{2\varepsilon_0}\hat{n}.\]
+This amounts to an outwards \vocab{electrostatic pressure} on the surface, drawing the conductor into the field, regardless of the sign of $\sigma$. We can also write the pressure as
+\[P=\frac{\varepsilon_0 E^2}{2}.\]
+
+\subsection{Capacitors}
+
+Suppose we have two conductors, one with charge $+Q$ on in it and one with charge $-Q$ on it. Since $V$ is constant over conductors, the potential difference between these two conductors is unambiguous:
+\[V=V_+-V_-=-\int_{(-)}^{(+)}\vec{E}\cdot d\vec{\ell}.\]
+We don't know how the charges get distributed, or what the exact field looks like, but we do know that $\vec{E}$ and $V$ should both be proportional to $Q$. After all, $\vec{E}$ is given by Coulomb's law
+\[\vec{E}=\frac{1}{4\pi\varepsilon_0}\iiint_{\mathbb{R}^3}\frac{\rho}{\scr^2}\hat{\scr}d\tau,\]
+so if you double $\rho$ everywhere, you double $\vec{E}$ as well. 
+
+\begin{remark}
+There is a slight caveat here: how do we know that, say, doubling $Q$ actually doubles $\rho$ everywhere. Maybe the charge would actually move around, so that in some places $\rho$ is quadrupled while in others maybe it is halved, so that the total charge $Q$ is still doubled. Well, it turns out that doubling $Q$ does in fact double $\rho$ everywhere, but the proof of this will have to wait for Chapter 3.
+\end{remark}
+
+Since $\vec{E}$ is proportional to $Q$, and $\vec{E}=-\nabla V$, $V$ is also proportional to $Q$. 
+
+\begin{definition}
+The constant of proportionality between $Q$ and $V$ is called the \vocab{capacitance} of the arrangement:
+\[C:=\frac{Q}{V}.\]
+\end{definition}
+
+Capacitance is a purely geometrical quantity, determined entirely by the sizes, shapes, and separation between the two conductors. Capacitance is measured in \vocab{farads}, which is a coulomb-per-volt. This is generally inconveniently large: microfarads and picofarads are more convenient.
+
+Note that since $Q$ and $V$ are both \textit{defined} to be positive, $C$ is always positive. 
+
+\begin{remark}
+Sometimes, you will hear people speak of the capacitance of a \textit{single} conductor. In this case, the ``second conductor" is an imaginary spherical shell of infinite radius surrounding the conductor. It contributes nothing to the field, so the capacitance is just given by $Q/V$ where $V$ is the potential with $\infty$ as the reference point.
+\end{remark}
+
+\begin{example}[Capacitance of parallel-plate capacitor]
+Find the capacitance of two metal surfaces of area $A$ held a distance of $d\ll A$ apart.
+\end{example}
+
+\begin{proof}[Solution]
+When $d\ll A$, the field between the two plates can be approximated as $Q/A\varepsilon_0$ from the positive plate to the negative plate. Therefore, the potential difference is
+\[V=-\int_{(-)}^{(+)}\vec{E}\cdot d\vec{\ell}=\frac{Qd}{A\varepsilon_0}.\]
+Hence,
+\[C=\frac{Q}{V}=\boxed{\frac{A\varepsilon_0}{d}}.\]
+\end{proof}
+
+\begin{example}
+Find the capacitance of two concentric spherical metal shells, with radii $a$ and $b$.
+\end{example}
+
+\begin{proof}[Solution]
+Place a charge $+Q$ on the inner sphere of radius $a$, and $-Q$ on the outer sphere of radius $b$. Then the field between the two spheres is
+\[\vec{E}=\frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2}\hat{r}.\]
+Therefore, the potential difference is
+\[V=\int_{(+)}^{(-)}\vec{E}\cdot d\vec{\ell}=\frac{Q}{4\pi\varepsilon_0}\int_a^b\frac{1}{r^2}dr=\frac{Q}{4\pi\varepsilon_0}\left(\frac{1}{a}-\frac{1}{b}\right).\]
+Hence,
+\[C=\frac{Q}{V}=\boxed{4\pi\varepsilon_0\cdot\frac{ab}{b-a}}.\]
+\end{proof}
+
+In order to charge up a capacitor, you must remove electrons from the positive plate and carry them to the negative plate. Doing so fights against the electric field. How much work does it take to charge up the capacitor to a final amount $Q$?
+
+\begin{proposition}
+The amount of work necessary to charge a capacitor up to a final amount $Q$ is given by
+\[W=\frac{Q^2}{2C}=\frac{1}{2}CV^2.\]
+\end{proposition}
+
+\begin{proof}
+Indeed, if we've already charged the capacitor up by $q$, then the potential difference is $q/C$. Hence, the work required to move it is
+\[dW=\frac{q}{C}dq.\]
+The total work, then, is
+\[W=\int_{0}^Q\frac{q}{C}dq=\frac{1}{2}\frac{Q^2}{C}.\]
+Since $Q=CV$, we often write this as
+\[W=\frac{1}{2}CV^2.\]
+\end{proof}
