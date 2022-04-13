@@ -376,7 +376,7 @@ However, in electrostatics, we can just as well say that the energy is stored in
 
 \paragraph{The superposition principle.} Because electrostatic energy is \textit{quadratic} in the fields, it does \textit{not} obey a superposition principle. The energy of a compound system is \textit{not} the sum of the energies of its parts considered equally, as there are cross terms:
 \[W_{\text{tot}}=\frac{\varepsilon_0}2\iiint (\vec{E_1}+\vec{E_2})^2d\tau=W_1+W_2+\varepsilon_0\iiint \vec{E_1}\cdot\vec{E_2}d\tau.\]
-For example, if you double the charge everywhere, you quadruple the total energy.
+For example, if you double the charge everywhere, you quadruple the total energy. The third term here is called the \vocab{interaction energy}: the total energy in the union of two charge configurations is the energy in either, plus the energy it takes to put them together (the interaction energy).  
 
 \section{Conductors}
 
@@ -443,7 +443,7 @@ Yet how do we know that this is actually what happens? Well, it turns out that d
 
 If there is no charge inside the cavity, then we can argue that $\vec{E}=0$; indeed, if there was some field line beginning and ending on the cavity wall, integrating across it would violate the fact that all points on the conductor have equal potential. This is the principle behind grounded \vocab{Faraday cages}, which will shield out stray electric fields. In practice, the conductor doesn't even have to be solid; something like chicken wire often suffices.
 
-\subsection{Surface Charge and the Force on a Conductor}
+\subsection{Surface Charge and the Force on a Conductor}\label{surfcharforcond}
 
 Since the field inside a conductor is zero, and all the charge is concentrated on the surface of the conductor, the boundary conditions from Section \ref{boundcond} require that the field immediately outside the conductor is
 \[\vec{E}=\frac{\sigma}{\varepsilon_0}\hat{n},\]
@@ -495,7 +495,7 @@ Find the capacitance of two metal surfaces of area $A$ held a distance of $d\ll 
 When $d\ll A$, the field between the two plates can be approximated as $Q/A\varepsilon_0$ from the positive plate to the negative plate. Therefore, the potential difference is
 \[V=-\int_{(-)}^{(+)}\vec{E}\cdot d\vec{\ell}=\frac{Qd}{A\varepsilon_0}.\]
 Hence,
-\[C=\frac{Q}{V}=\boxed{\frac{A\varepsilon_0}{d}}.\]
+\[C=\frac{Q}{V}=\boxed{\frac{\varepsilon_0A}{d}}.\]
 \end{proof}
 
 \begin{example}
