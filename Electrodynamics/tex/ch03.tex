@@ -686,6 +686,7 @@ Therefore, the full solution is
 \sum_{\ell=0}^\infty \left[\frac{1}{2\varepsilon_0 R^{\ell-1}}\int_0^\pi \sigma_0(\theta)P_\ell(\cos\theta)\sin\theta d\theta\right]r^\ell P_\ell(\cos\theta) & \text{if }r\le R,\\
 \sum_{\ell=0}^\infty \left[\frac{1}{2\varepsilon_0 R^{\ell-1}}\int_0^\pi \sigma_0(\theta)P_\ell(\cos\theta)\sin\theta d\theta\right]r^\ell P_\ell(\cos\theta)\cdot\left(\frac{R}{r}\right)^{2\ell+1} & \text{if }r\ge R.
 \end{dcases}}\]
+\end{proof}
 
 \begin{remark}
 As a concrete example, suppose $\sigma_0(\theta)=k\cos\theta=kP_1(\cos\theta)$; then, the only nonzero $A_\ell$ is clearly $\ell=1$, equal to
@@ -699,4 +700,147 @@ In particular, in the situation of Example \ref{sphereinfield}, the surface char
 so the field is $-E_0\hat{z}$, exactly right to cancel off the external field. You can also check that the outside potential agrees.
 \end{remark}
 
+\section{Multipole Expansion}
+
+\subsection{Approximate Potentials at Large Distances}
+
+If you are very far away from a localized charge distribution, it ``looks" like a point charge, and the potential is well-approximated by 
+\[\frac{Q}{4\pi\varepsilon_0r}.\]
+However, what if $Q=0$? Of course, the potential is then approximately zero (but this is true regardless; even if $Q\neq 0$, when $r\to \infty$, $V$ is approximately zero). 
+
+We're more interested in something a bit more informative: what the potential drop-off looks like. We know for nonzero $Q$ it drops off with $1/r$, but maybe when $Q=0$ in certain situations it drops off with $1/r^2$ and others $1/r^3$? This is the focus of multipole expansion.
+
+\begin{example}\label{physelecdip}
+A (physical) \vocab{electric dipole} consists of two equal and opposite charges $\pm q$ separated by a distance $d$. Find the approximate potential at points far from the dipole.
+\end{example}
+
+\begin{proof}
+Here's a picture of the setup:
+\begin{center}
+    \includegraphics[width=6cm]{Electrodynamics/images/fig3.26.PNG}
+\end{center}
+Here, note that
+\[V(\vec{r})=\frac{q}{4\pi\varepsilon_0}\left(\frac{1}{\scr_+}-\frac{1}{\scr_-}\right).\]
+Note that from the law of cosines,
+\[\scr_\pm^2=r^2+\left(\frac{d}{2}\right)^2\mp rd\cos\theta=r^2\left(1\mp \frac{d}{r}\cos\theta+\frac{d^2}{4r^2}\right).\]
+Since we are interested in the regime $r\gg d$, the third term is negligible, so
+\[\frac{1}{\scr_\pm}\approx \frac{1}{r}\left(1\mp \frac{d}{r}\cos\theta\right)^{-1/2}\approx \frac{1}{r}\left(1\pm\frac{d}{2r}\cos\theta\right).\]
+Thus,
+\[\boxed{V(\vec{r})\approx \frac{qd\cos\theta}{4\pi\varepsilon_0r^2}\qquad (r\gg d)}.\]
 \end{proof}
+
+Therefore, the potential of a dipole falls off with $1/r^2$ for large $r$. It makes sense that this falls off more rapidly than a point charge. Further, if we put two opposite dipoles together, we get a \vocab{quadrupole}, and it turns out that this potential falls off with $1/r^3$. We can then place two opposite quadrupoles together to form an \vocab{octopole}, whose potential falls off with $1/r^4$. This is summarized in the following figure:
+
+\begin{center}
+    \includegraphics[width=10cm]{Electrodynamics/images/fig3.27.PNG}
+\end{center}
+
+Now, let's try to develop this theory for a general charge distribution $\rho$. The necessary variables are defined in the diagram below:
+
+\begin{center}
+    \includegraphics[width=6cm]{Electrodynamics/images/fig3.28.PNG}
+\end{center}
+
+Recall that
+\[V(\vec{r})=\frac{1}{4\pi\varepsilon_0}\iiint_{\mathbb{R}^3}\frac{\rho(\vec{r'})}{\scr}d\tau'.\]
+Using the law of cosines, we have
+\[\scr^2=r^2+(r')^2-2rr'\cos\alpha=r^2\left[1+\left(\frac{r'}{r}\right)^2-2\left(\frac{r'}{r}\right)\cos\alpha\right].\]
+If we define 
+\[\epsilon:=\frac{r'}{r}\left(\frac{r'}{r}-2\cos\alpha\right),\]
+then we can Taylor expand
+\[\frac{1}{\scr}=\frac{1}{r}(1+\epsilon)^{-1/2}=\frac{1}{r}\left(1-\frac{1}{2}\epsilon+\frac{3}{8}\epsilon^2-\frac{5}{16}\epsilon^3+\cdots\right),\]
+and substituting $\epsilon$ gives
+\[\frac{1}{\scr}=\frac{1}{r}\left[1+\left(\frac{r'}{r}\right)(\cos\alpha)+\left(\frac{r'}{r}\right)^2\left(\frac{3\cos^2\alpha-1}{2}\right)+\left(\frac{r'}{r}\right)^3\left(\frac{5\cos^3\alpha-3\cos\alpha}{2}\right)\right].\]
+Oh, look! The Legendre polynomials have showed up again! This is an alternative way to the Rodrigues' Formula to define the polynomials, where $1/\scr$ is a \textit{generating function} for the Legendre polynomials.
+\[\frac{1}{\scr}=\frac{1}{r}\sum_{n=0}^\infty \left(\frac{r'}{r}\right)^nP_n(\cos\alpha).\]
+Substituting this back into our formula for the potential gives
+\[\boxed{V(\vec{r})=\frac{1}{4\pi\varepsilon_0}\sum_{n=0}^\infty \frac{1}{r^{n+1}}\iiint_{\mathbb{R}^3}(r')^nP_n(\cos\alpha)\rho(\vec{r'})d\tau'}.\]
+This is the \vocab{multipole expansion} that we're searching for; it can be written explicitly as
+\begin{align*}
+V(\vec{r})=\frac{1}{4\pi\varepsilon_0}&\left[\frac{1}{r}\iiint \rho(\vec{r'})d\tau'+\frac{1}{r^2}\iiint r'\cos\alpha \rho(\vec{r'})d\tau'\right.\\
+&\left.+\frac{1}{r^3}\iiint(r')^2\left(\frac{3}{2}\cos^2\alpha-\frac{1}{2}\right)\rho(\vec{r'})d\tau'+\cdots\right].
+\end{align*}
+Note that the first term is precisely $\frac{Q}{4\pi\varepsilon_0r}$ (as the integral of all the volume charge density should be exactly $Q$), what we would expect from a point charge. You can further check that the next term matches with $\frac{qd\cos\theta}{4\pi\varepsilon_0r^2}$ from the dipole moment above. The third is quadrupole, falling off with $1/r^3$; the fourth is octople, falling off with $1/r^4$; and so on.
+
+\begin{remark}
+If you're interested in the potential along the $z$-axis (so reorient your coordinate system so that $\vec{r}$ is pointing along the $z$-axis), then $\alpha$ is the usual polar angle $\theta$. 
+\end{remark}
+
+This multipole expansion is useful primarily as an approximation scheme, where you add more terms as more precision is needed.
+
+\subsection{The Monopole and Dipole Terms}
+
+At large $r$, the multipole expansion is dominated by the monopole term (as expected):
+\[V_{\text{mon}}(\vec{r})=\frac{1}{4\pi\varepsilon_0}\frac{Q}{r},\]
+where $Q=\iiint \rho d\tau$ is the total charge of the configuration. Of course, for the particular configuration of a single point charge at the origin, $V_{\text{mon}}$ is the \textit{exact} potential.
+
+If the total charge is zero, this term vanishes, and the multipole expansion is dominated by the dipole term:
+\[V_{\text{dip}}(\vec{r})=\frac{1}{4\pi\varepsilon_0}\frac{1}{r^2}\iiint_{\mathbb{R}^3}r'\cos\alpha \rho(\vec{r'})d\tau'.\]
+Since $\alpha$ is the angle between $\vec{r}$ and $\vec{r'}$, we can write this more succinctly as
+\[V_{\text{dip}}(\vec{r})=\frac{1}{4\pi\varepsilon_0}\frac{1}{r^2}\hat{r}\cdot\iiint_{\mathbb{R}^3}\vec{r'}\rho(\vec{r'})d\tau'.\]
+
+\begin{definition}
+The integral here (which luckily no longer depends on $\vec{r}$, since we removed the $\cos\alpha)$, is known as the \vocab{dipole moment} of the distribution:
+\[\vec{p}:=\iiint_{\RR^3}\vec{r'}\rho(\vec{r'})d\tau'.\]
+\end{definition}
+
+With this definition, the dipole contribution simplifies to
+\[V_{\text{dip}}(\vec{r})=\frac{1}{4\pi\varepsilon_0}\frac{\vec{p}\cdot\hat{r}}{r^2}.\]
+The dipole moment is determined by the geometry (size, shape, and density) of the charge distribution. For a collection of $n$ point charges $q_i$, the dipole moment is simply
+\[\vec{p}=\sum_{i=1}^n q_i\vec{r_i'}.\]
+Therefore, for a physical dipole (as in Example \ref{physelecdip}), we have
+\[\vec{p}=q\vec{r_+'}-q\vec{r_-'}=q\vec{d},\]
+where $\vec{d}$ is the vector of length $d$ from the negative charge to the positive one.
+
+Unlike the monopole, however, this is only the \textit{approximate} potential of the physical dipole, when $r$ is large (or $d$ is small). 
+
+\begin{definition}
+A \vocab{perfect dipole} is a physical dipole under the limit $d\to 0$, $q\to \infty$, while keeping the dipole moment $qd=p$ fixed. A perfect dipole's potential is exactly $V_{\text{dip}}$.
+\end{definition}
+
+Dipole moments are vectors, and they add like vectors. So given two dipoles with moments $\vec{p}_1$ and $\vec{p}_2$, the total dipole moment is $\vec{p}_1+\vec{p}_2$. Hence, the construction of the quadrupole: by arranging two opposite dipoles next to each other, the dipole moment is zero, so the potential is dominated by the quadrupole term in the multipole expansion.
+
+\subsection{Origin of Coordinates in Multipole Expansion}
+
+A point charge at the origin is a pure monopole. However, if it's off from the origin, it's no longer a pure monopole! For instance, a charge $q$ at $(0,d,0)$ has dipole moment $\vec{p}=qd\hat{y}$.
+
+After all, the exact potential is $\frac{1}{4\pi\varepsilon_0}\frac{q}{\scr}$, not over $\frac{1}{4\pi\varepsilon_0}\frac{q}{r}$ (this is why we need to expand $1/\scr$ as a generating function anyway, to get all the Legendre polynomials/higher order terms).
+
+Note, however, that moving the origin doesn't change the \vocab{monopole moment} $Q$ (or even the monopole term), it's just that the higher poles start to appear. In a similar way, movign the origin affects the dipole moment as well (and the higher pole terms). However, there is a special exception:
+
+\begin{claim}
+If the total charge is zero, then the dipole moment is independent of the choice of origin.
+\end{claim}
+
+\begin{proof}
+If we displace the origin by an amount $\vec{a}$, then the new dipole moment is
+\begin{align*}
+\vec{p}_{\text{new}}&=\iiint \vec{r'}_{\text{new}}\rho(\vec{r'})d\tau'\\
+&=\iiint (\vec{r'}-\vec{a})\rho(\vec{r'})d\tau'\\
+&=\iiint \vec{r'}\rho(\vec{r'})d\tau'-\vec{a}\iiint\rho(\vec{r'})d\tau'\\
+&=\vec{p}-Q\vec{a}.
+\end{align*}
+Therefore, if $Q=0$, then $\vec{p}_{\text{new}}=\vec{p}$.
+\end{proof}
+
+So if someone asks you for the dipole moment of configuration (a) below, you can confidently say $q\vec{d}$. But if someone asks you for the dipole moment of configuration (b) below, you should respond ``with respect to \textit{what origin}?"
+
+\subsection{The Electric Field of a Dipole}
+
+Let's use the potential to calculate the electric field of a perfect dipole. Change coordinates so that $\vec{p}$ is at the origin and pointing in the $z$ direction, then 
+\[V_{\text{dip}}(r,\theta)=\frac{1}{4\pi\varepsilon_0}\frac{\vec{p}\cdot \hat{r}}{r^2}=\frac{p\cos\theta}{4\pi\varepsilon_0r^2}.\]
+Now we take the negative gradient of $V$ to get the electric field $\vec{E}$:
+\begin{align*}
+    E_r&=-\frac{\partial V}{\partial r}=\frac{p\cos\theta}{2\pi\varepsilon_0r^3}\\
+    E_\theta&=-\frac{1}{r}\frac{\partial V}{\partial\theta}=\frac{p\sin\theta}{4\pi\varepsilon_0 r^3}\\
+    E_\varphi&=-\frac{1}{r\sin\theta}\frac{\partial V}{\partial \varphi}=0
+\end{align*}
+Hence,
+\[\vec{E}_{\text{dip}}(r,\theta)=\frac{p}{4\pi\varepsilon_0r^3}(2\cos\theta \cdot\hat{r}+\sin\theta\cdot\hat{\theta}).\]
+This makes explicit reference to a particular coordinate system (spherical), and assumes a particular orientation for $\vec{p}$ (along the $z$-axis). Note that the dipole electric field falls off with the inverse \textit{cube} of $r$ (after all, the monopole field falls of with the inverse \textit{square}). This makes sense since the gradient simply introduces another factor of $1/r$ into the potential drop offs. 
+
+Below is a picture of a pure dipole electric field and a physical dipole electric field. Note how for $r\gg d$, they pretty much agree.
+
+\begin{center}
+    \includegraphics[width=12cm]{Electrodynamics/images/fig3.37.PNG}
+\end{center}
