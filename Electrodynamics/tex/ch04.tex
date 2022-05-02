@@ -1,0 +1,93 @@
+\chapter{Electric Fields in Matter}
+
+\section{Polarization}
+
+\subsection{Dielectrics}
+
+Most everyday objects belong to one of two large classes: \vocab{conductors} and \vocab{insulators} (or \vocab{dielectrics}).
+
+\begin{definition}
+In an \vocab{insulator}, all charges are attached to specific atoms or molecules. They're on a tight leash, and all they an do is move a little \textit{within} the atom or molecule.
+\end{definition}
+
+This is in contrast to conductors, where there is an ``unlimited" supply of charges that are free to move around throughout the material, without being attached to particular atoms or molecules.
+
+The microscopic displacements within a dielectric material is not as dramatic as the rearrangement of charge in a conductor, but their effects account for the characteristic behavior of dielectric materials. External electric fields can distort the charge distribution of a dielectric atom or molecule in \textit{two} ways: \textit{stretching} and \textit{rotating}.
+
+\subsection{Induced Dipoles}
+
+What happens when a neutral atom is placed in an electric field $\vec{E}$? 
+
+An initial guess is that nothing should happen: the atom is not charged, so the field has no effect on it. However, this is incorrect. Even though the atom \textit{as a whole} is electrically neutral, there is still a positively charged core (the nucleus) and negatively charged electron cloud surrounding it. These two regions are pushed and pulled by the field.
+
+If the field is large enough, then this could be enough to pull the atom apart completely, ``ionizing" it into a conudctor. With less extreme fields, however, an equilibrium is established as the positive and negative charges attract one another, holding the atom together. 
+
+This leaves the atom \vocab{polarized}, with plus charge shifted slightly in the direction of the field and the minus charge the other way. The atom now has a tiny dipole moment $\vec{p}$, which points in the \textit{same direction} as $\vec{E}$. Typically, these are roughly proportional
+\[\vec{p}=\alpha\vec{E},\]
+where the constant of proportionality is called the \vocab{atomic polarizability}.
+
+\begin{example}\label{primatompolar}
+A primitive model for an atom consists of a point nucleus $(+q)$ surrounded by a uniformly charged spherical cloud $(-q)$ of radius $a$. Calculate the atomic polarizability of such an atom.
+\end{example}
+
+\begin{proof}
+Suppose the $+q$ nucleus is shifted a distance of $d$ in the direction of the electric field $\vec{E}$. Then, the field due to the spherical cloud pulling it back should be equal to $E$. Hence,
+\[\frac{1}{4\pi\varepsilon_0}\cdot \frac{q\cdot d^3/a^3}{d^2}=\frac{qd}{4\pi\varepsilon_0 a^3},\]
+so $p=4\pi\varepsilon_0 a^3\cdot E$. Hence,
+\[\alpha=4\pi\varepsilon_0a^3=3\varepsilon_0 v,\]
+where $v$ is the volume of the atom.
+\end{proof}
+
+\begin{remark}
+Though this model is quite crude, the result isn't actually that bad---it's accurate within a factor of four or so for many simple atoms.
+\end{remark}
+
+Molecules are not as simple as atoms, since frequently they can polarize more easily in some directions than in others. For example, carbon dioxide has a polarizability of $4.5\times 10^{-40} \text{ C}^2\cdot\text{m}/\text{N}$ when a field is applied along the axis of the molecules, but only $2\times 10^{-40}$ for fields perpendicular to the axis. Therefore, if the field is at some angle to the axis, we resolve it into parallel and perpendicular components:
+\[\vec{p}=\alpha_\perp\vec{E}_\perp + \alpha_\parallel \vec{E}_\parallel.\]
+In these cases, the induced dipole moment may \textit{not} be in the same direction as $\vec{E}$.
+
+For more general molecules (i.e. a completely asymmetrical molecule), we replace the equation with the most general linear relation between $\vec{E}$ and $\vec{p}$:
+\[\begin{bmatrix}
+p_x \\ p_y \\ p_z
+\end{bmatrix}=\begin{bmatrix}
+\alpha_{xx} & \alpha_{xy} & \alpha_{xz}\\
+\alpha_{yx} & \alpha_{yy} & \alpha_{yz}\\
+\alpha_{zx} & \alpha_{zy} & \alpha_{zz}
+\end{bmatrix}\cdot\begin{bmatrix}
+E_x \\ E_y \\ E_z
+\end{bmatrix}.\]
+The set of nine constants $\alpha_{ij}$ make up the \vocab{polarizability tensor} for the molecule. These values depend on the orientation of the coordinate axes that we choose, but note that we can always choose ``principal" axes so that the off-diagonal terms vanish (the matrix is diagonalizable).
+
+\subsection{Alignment of Polar Molecules}
+
+The neutral atom discussed in Example \ref{primatompolar} had no dipole moment to start with: $\vec{p}$ was induced by the external electric field $\vec{E}$. However, some molecules have built-in, permanent dipole moments. For example, in a water molecule, the electrons tend to cluster around the oxygen atom, and since it is bent at $105^\circ$, there is a negative charge built up at the vertex and a positive charge on the opposite side. The dipole moment thus generated is unusually large: $6.1\times 10^{-30}\text{ C}\cdot\text{m}$.
+
+What happens when such \vocab{polar molecules} are placed in an electric field? Well, the \textit{force} on the positive end exactly cancels out the force on the negative end, but a torque is induced:
+\begin{align*}
+\vec{N}&=(\vec{r}_+\times \vec{F}_+)+(\vec{r}_-\times \vec{F}_-)\\
+&=\left[(\vec{d}/2)\times (q\vec{E})\right]+\left[(-\vec{d}/2)\times (-q\vec{E})\right]=q\vec{d}\times \vec{E}.
+\end{align*}
+Thus a dipole $\vec{p}=q\vec{d}$ in a uniform field $\vec{E}$ experiences a torque
+\[\vec{N}=\vec{p}\times\vec{E}.\]
+Note that $\vec{N}$ is in a direction which tries to line $\vec{p}$ up with $\vec{E}$. Therefore, a polar molecule that is free to rotate will swing around until it points in the direction of the applied field.
+
+If the field is \textit{nonuniform}, then there will be a net \textit{force} on the dipole, in addition to the torque. Normally this is not much of an issue, since $\vec{E}$ would have to change very abruptly in teh space of one molecule. Nonetheless, we have
+\[\vec{F}=\vec{F}_++\vec{F}_-=q(\vec{E}_+-\vec{E}_-)=q(\Delta \vec{E}).\]
+If the dipole is short, we can approximate the small change in $E_x$ along the direction $\vec{d}$ by
+\[\Delta E_x=(\nabla E_x)\cdot \vec{d}.\]
+This gives
+\[\Delta\vec{E}=(\vec{d}\cdot \nabla)\vec{E},\]
+so
+\[\vec{F}=(\vec{p}\cdot \nabla)\vec{E}.\]
+
+\subsection{Polarization}
+
+So, what happens to a piece of dielectric material when it is placed in an electric field? From our discussion in the previous sections:\footnote{The actual process is not quite as clear-cut as these two bullets would suggest: polar molecules also experience some polarization by displacement (though generally rotation is much easier so that's the dominant effect), and some materials retain their polarization after the field is removed.}
+\begin{itemize}
+    \item If the substance consists of neutral atoms (or nonpolar molecules), the field will induce a tiny dipole moment pointing in the same direction as the field.
+    \item If the substance consists of polar molecules, each permanent dipole will experience a torque, tending it to line up along the direction of the field (though random thermal motions will compete with this process).
+\end{itemize}
+The net result, either way, is that we end up with a lot of little dipoles pointing along the direction of the field, making the material \vocab{polarized}. A measure of this effect is the \vocab{polarization} $\vec{P}$, defined as the dipole moment per unit volume.
+
+In the next section, we will study the field that a chunk of polarized material \textit{itself} produces. After that, we will put together the original field that caused $\vec{P}$ and the new field due to $\vec{P}$.
+
