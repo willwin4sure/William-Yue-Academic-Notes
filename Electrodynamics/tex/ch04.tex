@@ -375,3 +375,265 @@ P_x\\P_y\\P_z
 E_x\\E_y\\E_z
 \end{bmatrix},\]
 where the matrix of nine constants $\chi_{e_{ij}}$ make up the \vocab{susceptibility tensor}.
+
+\subsection{Boundary Value Problems with Linear Dielectrics}
+
+In a homogeneous isotropic linear dielectric, the bound charge density $\rho_b$ is proportional to the free charge density:
+\[\rho_b=-\nabla\cdot \vec{P}=-\nabla\cdot\left(\varepsilon_0\frac{\chi_e}{\varepsilon}\vec{D}\right)=-\left(\frac{\chi_e}{1+\chi_e}\right)\rho_f.\]
+Therefore, unless free charge is actually embedded in a dielectric, $\rho=0$ and any net charge must reside at its surface. Therefore, within such a dielectric, the potential obeys Laplace's equation, and all our work in Chapter \ref{potentials} carries over.
+
+For boundary conditions, however, we want to rewrite them in a way that references only the free charge. Since $\vec{D}=\varepsilon \vec{E}$, we have that
+\[\varepsilon_{\text{above}}E_{\text{above}}^\perp -\varepsilon_{\text{below}}E_{\text{below|}}^\perp=\sigma_f,\]
+or
+\[\varepsilon_{\text{above}}\frac{\partial V_{\text{above}}}{\partial n}-\varepsilon_{\text{below}}\frac{\partial V_{\text{below}}}{\partial n}=-\sigma_f.\]
+
+Let's do some problems!
+
+\begin{example}
+A sphere of homogeneous linear dielectric mateiral is placed in an otherwise uniform electric field $\vec{E}_0$. Find the electric field inside the sphere.
+\end{example}
+
+\begin{proof}
+We need to solve Laplace's equation $\nabla^2 V=0$ for $V_{\text{in}}(r,\theta)$ when $r\le R$ and $V_{\text{out}}(r,\theta)$ when $r\ge R$, subject to the following boundary conditions:
+\begin{enumerate}[(i)]
+    \item $V_{\text{in}}=V_{\text{out}}$ on the boundary $r=R$,
+    \item $\varepsilon \frac{\partial V_{\text{in}}}{\partial r}=\varepsilon_0\frac{\partial V_{\text{out}}}{\partial r}$ on the boundary $r=R$,
+    \item $V_{\text{out}}\to -E_0r\cos\theta$ for $r\gg R$.
+\end{enumerate}
+The second equation is since there is no free charge at the surface of the dielectric. Inside the sphere, we need to solve
+\[V_{\text{in}}(r,\theta)=\sum_{\ell=0}^\infty A_\ell r^\ell P_\ell(\cos\theta).\]
+Meanwhile, outside the sphere, we should have
+\[V_{\text{out}}(r,\theta)=-E_0r\cos\theta +\sum_{\ell=0}^\infty \frac{B_\ell}{r^{\ell+1}}P_\ell(\cos\theta).\]
+Boundary condition (i) requires that
+\[\sum_{\ell=0}^\infty A_\ell R^\ell P_\ell(\cos\theta)=-E_0R\cos\theta + \sum_{\ell=0}^\infty \frac{B_\ell}{R^{\ell+1}}P_\ell(\cos\theta).\]
+Therefore,
+\[A_\ell R^\ell = \frac{B_\ell}{R^{\ell+1}}\]
+for $\ell\neq 1$ and
+\[A_1R=-E_0R+\frac{B_1}{R^2}.\]
+Meanwhile, condition (ii) gives
+\[\varepsilon_r\sum_{\ell=0}^\infty \ell A^\ell R^{\ell-1}P_\ell(\cos\theta)=-E_0\cos\theta-\sum_{\ell=0}^\infty\frac{(\ell+1)B_\ell}{R^{\ell+2}}P_\ell(\cos\theta),\]
+so
+\[\varepsilon_r\ell A_\ell R^{\ell-1}=-\frac{(\ell+1)B_\ell}{R^{\ell+2}}\]
+for $\ell\neq 1$ and
+\[\varepsilon_rA_1=-E_0-\frac{2B_1}{R^3}.\]
+Therefore, $A_\ell=B_\ell=0$ for $\ell\neq 1$, and $A_1=-\frac{3}{\varepsilon_r+2}E_0$ and $B_1=\frac{\varepsilon_r-1}{\varepsilon_r+2}R^3E_0$. Evidently,
+\[V_{\text{in}}(r,\theta)=-\frac{3E_0}{\varepsilon_r+2}z,\]
+so the field inside is actually \textit{uniform}, as
+\[\boxed{\vec{E}=\frac{3}{\varepsilon_r+1}\vec{E}_0}\]
+\end{proof}
+
+\begin{example}
+Suppose the entire region below the plane $z=0$ is filled with uniform linear dielectric material of susceptibility $\chi_e$. Calculate the force on a point charge $q$ situated a distance $d$ above the origin.
+\end{example}
+
+\begin{proof}
+We will use the following method:
+\begin{itemize}
+    \item Write the surface bound charge as a function of the vertical component of the electric field, just inside the dielectric;
+    \item Write this vertical component of the internal electric field as a sum of the contribution by the free point charge and the surface bound charge;
+    \item Solve this equation to get the surface bound charge;
+    \item Either directly integrate this surface bound charge to get the electric field/force; or, in our case, use a clever method of images to determine the force.
+\end{itemize}
+Now that we have our game plan, let's execute it! First, note that there is no volume bound charge in the homogeneous linear dielectric since $\rho_b$ is proportional to $\rho_f$ inside (as $\vec{P}$ is proportional to $\vec{D}$). The surface bound charge, however, is equal to
+\[\sigma_b=\vec{P}\cdot\hat{n}=P_z=\varepsilon_0\chi_eE_z,\]
+where $E_z$ is the $z$-component of the electric field just inside the dielectric.
+
+The contribution of the free point charge to $E_z$ is equal to
+\[-\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2+d^2}\cos\theta=-\frac{1}{4\pi\varepsilon_0}\frac{qd}{(r^2+d^2)^{3/2}}.\]
+On the other hand, the contribution of the bound charge is simply $-\frac{\sigma_b}{2\varepsilon_0}$. Therefore,
+\[\sigma_b=\varepsilon_0\chi_eE_z=\varepsilon_0\chi_e\left[-\frac{1}{4\pi\varepsilon_0}\frac{qd}{(r^2+d^2)^{3/2}}-\frac{\sigma_b}{2\varepsilon_0}\right].\]
+This allows us to solve
+\[\sigma_b=-\frac{1}{2\pi}\left(\frac{\chi_e}{\chi_e+2}\right)\frac{qd}{(r^2+d^2)^{3/2}}.\]
+Noting that $r^2=x^2+y^2$, if we compare this result to Example \ref{pointconductingplanecharge}, we see that the induced charge is the same as on an infinite \textit{conducting} plane, up to a factor of $\chi_e/(\chi_e+2)$. Because of this, the \textit{total} bound charge is simply
+\[q_b=-\left(\frac{\chi_e}{\chi_e+2}\right)q\]
+(which can be checked through integration, as well).
+
+Now, we need to obtain the field of $\sigma_b$. This can be done through direct integration:
+\[\vec{E}=\frac{1}{4\pi\varepsilon_0}\iint \left(\frac{\hat{\scr}}{\scr^2}\right)\sigma_bda.\]
+However, it turns out that there is a clever method by the method of images. If we replace the dielectric with a single point charge $q_b$ at the image position $(0,0,-d)$, then we will achieve a potential of
+\[V=\frac{1}{4\pi\varepsilon_0}\left[\frac{q}{\sqrt{r^2+(z-d)^2}}+\frac{q_b}{\sqrt{r^2+(z+d)^2}}\right]\qquad (z>0).\]
+Meanwhile, if we consider a charge of $q+q_b$ at $(0,0,d)$, we get a potential
+\[V=-\frac{1}{4\pi\varepsilon_0}\left[\frac{q+q_b}{\sqrt{r^2+(z-d)^2}}\right]\qquad (z<0).\]
+Together, we have a function that satisfies Poisson's equation with a point charge $q$ at $(0,0,d)$ (we use the $z>0$ equation in this case), which goes to zero at infinity, which is continuous on the boundary $z=0$, and whose normal derivative exhibits the discontinuity as expected by a surface charge $\sigma_b$ at $z=0$:
+\[-\varepsilon_0\left(\left.\frac{\partial V}{\partial z}\right\rvert_{z=0^+}-\left.\frac{\partial V}{\partial z}\right\rvert_{z=0^-}\right)=-\frac{1}{2\pi}\left(\frac{\chi_e}{\chi_e+2}\right)\frac{qd}{(r^2+d^2)^{3/2}}.\]
+For this final check, simply note that we can remove a charge $q$ from both situations, so this is equivalent to the fact that using an image charge works in the standard point and conducting plane situation, simply scaled by $\frac{\chi_e}{\chi_e+2}$.
+
+By the uniqueness theorem, this is the correct potential for our problem. Therefore, the force on $q$ is
+\[\vec{F}=\frac{1}{4\pi\varepsilon_0}\frac{qq_b}{(2d)^2}\hat{z}=\boxed{-\frac{1}{4\pi\varepsilon_0}\left(\frac{\chi_e}{\chi_e+2}\right)\frac{q^2}{4d^2}\hat{Z}}.\]
+\end{proof}
+
+\begin{remark}[Some helpful rules for method of images]
+We have not exactly given \textit{motivation} for the method of images used above; its justification simply comes down to the fact that it \textit{works}, so it has to be the unique solution. However, here are some helpful rules for determining a potential solution:
+\begin{enumerate}
+    \item You must never put an image charge into the region where you're computing the potential
+    \item The image charges must add up to the correct total in each region (and hence $q_b$ is necessary to be added in each case)
+\end{enumerate}
+\end{remark}
+
+\subsection{Energy in Dielectric Systems}
+
+We determined in Proposition \ref{workchargecapacitor} that the work required to charge up a capacitor is given by
+\[W=\frac{1}{2}CV^2.\]
+However, if we fill a capacitor with a linear dielectric, then its capacitance is increased by a factor of $\varepsilon_r=\varepsilon/\varepsilon_0$ compared to when there is simply a vacuum:
+\[C=\varepsilon_r C_\text{vac}.\]
+Therefore the work required to charge the capacitor is also increased by the same amount. This makes sense, since in order to achieve a certain potential, you need to pump in more free charge, as part of the field is canceled off by the bound charges from the dielectric.
+
+\begin{theorem}\label{dielectricsworkfield}
+In the presence of dielectrics, the work required to assemble the \textit{free charges} in the configuration is given by
+\[W=\frac{1}{2}\iiint (\vec{D}\cdot\vec{E}) d\tau.\]
+\end{theorem}
+
+\begin{remark}
+This is reasonable, since if there are no dielectrics, then $\vec{D}=\varepsilon_0\vec{E}$, and our equation matches the standard
+\[W=\frac{\varepsilon_0}{2}\iiint E^2 d\tau\]
+equation as derived in Section \ref{energyinfield}. Further, the dielectric-filled capacitor suggests that we need to modify our equation to
+\[W=\frac{\varepsilon_0}{2}\iiint \varepsilon_r E^2 d\tau,\]
+which also matches out new theorem.
+\end{remark}
+
+\begin{proof}
+In order to prove this, suppose that the dielectric material is fixed in position, and we bring in the free charge, a bit at a time. Suppose $\rho_f$ is increased by an amount $\Delta \rho_f$, the polarization will change and so will the bound charge; however, in this case, we're interested only in the work done on the incremental \textit{free} charge:
+\[\Delta W=\iiint (\Delta\rho_f)V d\tau.\]
+Since $\rho_f=\nabla\cdot \vec{D}$, we have that
+\[\Delta W=\iiint [\nabla\cdot (\Delta \vec{D})]Vd\tau.\]
+We will apply integration by parts to transfer the derivative. By the product rules, we have
+\[\nabla\cdot (V\Delta \vec{D})=(\nabla V)\cdot \Delta\vec{D}+V[\nabla\cdot(\Delta \vec{D})].\]
+Therefore,
+\begin{align*}
+    \Delta W&=\iiint_{\RR^3} [\nabla\cdot (V\Delta \vec{D})-(\nabla V)\cdot \Delta \vec{D}]d\tau\\
+    &=\oiint_{\partial\RR^3} (V\Delta \vec{D})\cdot d\vec{a}+\iiint_{\RR^3}(\vec{E}\cdot \Delta\vec{D})d\tau\\
+    &=\iiint (\vec{E}\cdot \Delta\vec{D})d\tau
+\end{align*}
+since the first term vanishes as we are integrating over all space. So far, this analysis works for any materials. However, if the medium is a linear dielectric in particular, we have $\vec{D}=\varepsilon \vec{E}$. Therefore,
+\[\frac{1}{2}\Delta(\vec{D}\cdot\vec{E})=\frac{1}{2}\Delta(\varepsilon E^2)=\varepsilon (\Delta \vec{E})\cdot \vec{E}=(\Delta \vec{D})\cdot \vec{E}\]
+for infinitesimal increments. Thus,
+\[\Delta W=\Delta\left[\frac{1}{2}\iiint (\vec{D}\cdot\vec{E})d\tau\right].\]
+Building up all the free charges, then, gives a total work of
+\[W=\frac{1}{2}\iiint (\vec{D}\cdot\vec{E})d\tau,\]
+as desired.
+\end{proof}
+
+\begin{remark}
+Working backwards from this equation will allow us to derive that $W=\frac{1}{2}\iiint \rho_fV\cdot d\tau$. Do not convince yourself that this equation should be true \textit{a priori}, as it isn't obvious in the presence of dielectrics!
+\end{remark}
+
+But what happened to the equation 
+\[W=\frac{\varepsilon_0}{2}\iiint E^2 d\tau\]
+that we seemed to derive in all generality in Section \ref{energyinfield}? Does this contradict our new Theorem \ref{dielectricsworkfield}? Well, neither of them are \textit{wrong}, just that the two equations answer two somewhat different questions. When dielectrics are involved, the work required to assemble a system can be construed in two different ways:
+
+\begin{enumerate}
+    \item We bring in \textit{all} the charges (free and bound), one by one, and glue each of them down into its proper final location. If \textit{this} is what is meant by assembling the system, then the equation
+    \[W=\frac{\varepsilon_0}{2}\iiint E^2d\tau\]
+    is the correct equation for the energy stored. However, this does \textit{not} include the work involved in stretching and twisting the dielectric molecules (if we picture the positive and negative charges as held together by tiny springs, it does not include the spring energy $\frac{1}{2}kx^2$ associated with polarizing each molecules).\footnote{You might hope that this spring energy \textit{is} included, since the spring could be electrical in nature... however, even if it is electrical in nature, it \textit{still} isn't included, since $\vec{E}$ is taken to be the \textit{macroscopic} field.}
+    \item With the unpolarized dielectrics in place, we bring in the \textit{free} charges, one by one, allowing the dielectric to respond as it sees fit. If \textit{this} is what is meant by assembling the system (and usually it is, since the free charge is what we actually control and move around), then the equation
+    \[W=\frac{1}{2}\iiint (\vec{D}\cdot\vec{E})d\tau\]
+    is the correct equation for the energy stored. In this case, the ``spring" energy \textit{is} included, albeit indirectly, because the force you must apply to the \textit{free} charge depends on the bound charge: as you move the free charge, you are automatically putting in the work to stretch the ``springs".
+\end{enumerate}
+
+\begin{example}
+A sphere of radius $R$ is filled with material of dielectric constant $\varepsilon_r$ and uniform embedded free charge $\rho_f$. What is the energy of this configuration?
+\end{example}
+
+\begin{proof}
+Using Gauss's law in the presence of dielectrics, we have that
+\[\vec{D}(r)=\begin{dcases}
+\frac{r}{3}\rho_f\hat{r} & (r<R),\\
+\frac{R^3}{3r^2}\rho_f\hat{r} & (r>R).
+\end{dcases}\]
+Recalling that $\vec{D}=\varepsilon \vec{E}$, we have that
+\[\vec{E}(r)=\begin{dcases}
+\frac{r}{3\varepsilon_r\varepsilon_0}\rho_f\hat{r} & (r<R),\\
+\frac{R^3}{3r^2\varepsilon_0}\rho_f\hat{r} & (r>R).
+\end{dcases}\]
+Some computation gives that the pure \textit{electrostatic} energy is given by
+\[W_1=\frac{\varepsilon_0}{2}\iiint E^2d\tau =\frac{2\pi}{9\varepsilon_0}\rho_f^2R^5\left(\frac{1}{5\varepsilon_r^2}+1\right),\]
+while the \textit{total} energy is given by
+\[W_2=\frac{1}{2}\iiint (\vec{D}\cdot\vec{E})d\tau=\frac{2\pi}{9\varepsilon_0}\rho_f^2R^5\left(\frac{1}{5\varepsilon_r}+1\right).\]
+Note in particular that $W_1<W_2$; this is because $W_1$ fails to include the energy involved in stretching the molecules. 
+
+Let's now check that $W_2$ is the work done on the \textit{free} charge in assembling the system. We start with the (uncharged, unpolarized) dielectric sphere, and bring in increments $dq$ of charge. When we have already reached radius $r'$, the electric field, by Gauss's law, is
+\[\vec{E}(r)=\begin{dcases}
+\frac{\rho_f}{3\varepsilon_0\varepsilon_r}\vec{r} & r<r',\\
+\frac{\rho_f}{3\varepsilon_0\varepsilon_r}\frac{r'^3}{r^2}\hat{r} & r'<r<R,\\
+\frac{\rho_f}{3\varepsilon_0}\frac{r'^3}{r^2}\hat{r} & r>R.
+\end{dcases}\]
+Therefore, the work required to bring in the charge $dq$ is given by
+\[dW=-dq\left[\int_\infty^R\vec{E}\cdot d\vec{\ell}+\int_R^{r'}\vec{E}\cdot d\vec{\ell}\right]=\frac{\rho_fr'^3}{3\varepsilon_0}\left[\frac{1}{R}+\frac{1}{\varepsilon_r}\left(\frac{1}{r'}-\frac{1}{R}\right)\right]dq.\]
+Noting that $dq=\rho_f\cdot 4\pi r'^2dr'$, we can integrate to check that the total work indeed equals $W_2$.
+
+The energy stored in the molecular ``springs" is clearly
+\[W_{\text{spring}}=W_2-W_1=\frac{2\pi}{45\varepsilon_0\varepsilon_r^2}\rho_f^2R^5(\varepsilon_r-1).\]
+Let's try to confirm this using an explicit model. Picture each little dipole within the dielectric as charges $+q$ and $-q$ attached to a zero-length spring with spring constant $k$ (this spring accounts for all forces holding the charges together, including their electrical attraction); in the absence of any field, the positive and negative ends coincide.
+
+One end of this spring is nailed in place (like the nuclei in a solid), but the other is free to move around. Let $d\tau$ be the volume assigned to each of these little dipoles (though the dipole may only occupy a small portion of this space).
+
+Let's immerse this spring into an electric field; if the charges become separated by a distance $d$, then we must have $qE=kd$. In our case, we have that
+\[\vec{E}=\frac{\rho_f}{3\varepsilon_0\varepsilon_r}\vec{r}\]
+resulting in some polarization. Each of the springs ends with a dipole moment $P\cdot d\tau=qd$, so
+\[k=\frac{\rho_f}{3\varepsilon_0\varepsilon_rd^2}Pr\cdot d\tau.\]
+The energy stored in this spring, then, is
+\[dW_{\text{spring}}=\frac{1}{2}kd^2=\frac{\rho_f}{6\varepsilon_0\varepsilon_r}Pr\cdot d\tau.\]
+Therefore, the total energy stored is
+\[W_{\text{spring}}=\frac{\rho_f}{6\varepsilon_0\varepsilon_r}\iiint Pr\cdot d\tau.\]
+Finally, let us use
+\[\vec{P}=\varepsilon_0\chi_e\vec{E}=\varepsilon_0\chi_e\frac{\rho_f}{3\varepsilon_0\varepsilon_r}\vec{r}=\frac{(\varepsilon_r-1)\rho_f}{3\varepsilon_r}\hat{r}.\]
+Hence 
+\[W_{\text{spring}}=\frac{\rho_f}{6\varepsilon_0\varepsilon_r}\frac{(\varepsilon_r-1)\rho_f}{3\varepsilon_r}\cdot 4\pi\int_0^R r^4dr=\frac{2\pi}{45\varepsilon_0\varepsilon_r^2}\rho_f^2R^5(\varepsilon_r-1),\]
+as expected.
+\end{proof}
+
+\subsection{Forces on Dielectrics}
+
+Just as conductors are attracted into an electric field, so are dielectrics. This is because bound charge tends to accumulate near the free charge of the opposite sign.
+
+In this section, we will consider the following problem:
+
+\begin{example}
+Consider a slab of linear dielectric material of susceptibility $\chi_e$ partially inserted between the plates of a parallel-plate capacitor with separation distance $d$, width $w$, and length $\ell$, as shown below. If the potential between the plates is $V$, then determine the electrical force of the capacitor on the slab.
+\end{example}
+
+\begin{center}
+    \includegraphics[width=10cm]{Electrodynamics/images/fig4.30.PNG}
+\end{center}
+
+\begin{proof}
+    First, note that we need to change our model of the electric field of a parallel-plate capacitor. So far, we have assumed that the field is uniform inside, and 0 outside. If this were really true, there should be no force on the dielectric at all. However, in reality, there exists a \vocab{fringing field} around the edges which can be usually ignored, but in this case is responsible for the entire effect.
+    
+    \begin{center}
+    \includegraphics[width=8cm]{Electrodynamics/images/fig4.31.PNG}
+    \end{center}
+    
+    Actually calculating fringing fields is notoriously difficult. However, we can avoid this entirely, using the following method, which analyzes the \textit{energy} involved.
+    
+    Let $W$ be the energy of the system; this depends on the amount of overlap between the dielectric and the capacitor. If I pull out the dielectric by an infinitesimal distance $dx$, then the energy is changed by an amount equal to the work done:
+    \[dW=F_{\text{me}}\cdot dx,\]
+    where $F_{\text{me}}$ is the amount of force I do to counteract the electrical force of attraction.
+    
+    Therefore,
+    \[F=-\frac{dW}{dx}.\]
+    The energy stored in the capacitor is equal to
+    \[W=\frac{1}{2}CV^2,\]
+    and the capacitance is
+    \[C=\frac{\varepsilon_0 w}{d}(\varepsilon_r\ell-\chi_e x).\]
+    If we hold the total charge on the plates constant $(Q=CV)$, then we need to use the equation (so we don't need to consider potential as a function of $x$)
+    \[W=\frac{1}{2}\frac{Q^2}{C}.\]
+    Then,
+    \[F=-\frac{dW}{dx}=\frac{1}{2}\frac{Q^2}{C^2}\cdot\frac{dC}{dx}.\]
+    However,
+    \[\frac{dC}{dx}=-\frac{\varepsilon_0\chi_ew}{d},\]
+    so
+    \[\boxed{F=-\frac{\varepsilon_0\chi_ew}{2d}V^2}.\]
+    
+    We also could have chosen to instead consider what happens if we kept the capacitor at a constant potential, for example by connecting it to a battery. However, in this case, the battery also does \textit{work} as the dielectric moves, so
+    \[dW=F_{\text{me}}\cdot dx+VdQ.\]
+    Hence,
+    \[F=-\frac{dW}{dx}+V\frac{dQ}{dx}=-\frac{1}{2}V^2\frac{dC}{dx}+V^2\frac{dC}{dx}=\frac{1}{2}V^2\frac{dC}{dx},\]
+    which matches the above. Note that we had to use the equation $W=\frac{1}{2}CV^2$ instead since the potential was held constant (and we don't want to consider charge as a function of $x$).
+\end{proof}
+
+\begin{remark}
+Of course, the force on the dielectric shouldn't depend on whether we hold $Q$ or $V$ constant; after all, it is solely dependent on the distribution of free and bound charges \textit{at this given moment}; we are simply displacing it by a $dx$ to see how the energy changes. Either way of solving this problem is valid, but the constant potential method is a bit trickier since we need to deal with the work from the battery.
+\end{remark}
+
+We determined the force without knowing anything about the fringing fields themselves!! 
+
